@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 12:31:47 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/03 15:14:04 by cwannhed         ###   ########.fr       */
+/*   Created: 2025/12/01 15:23:33 by cwannhed          #+#    #+#             */
+/*   Updated: 2025/12/01 16:55:18 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 
-int main (int argc, char **argv)
-{
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	else
-	{
-		for (int i = 1; i < argc; i++)
-		{
-			for(int j = 0; argv[i][j]; j++)
-				std::cout << static_cast<char>(std::toupper(argv[i][j]));
-		}
-		std::cout << std::endl;
-	}
-	return (0);
-}
+#include <string>
+#include <iostream>
+
+class Contact {
+	int	index;
+	std::string 
+};
+
+#endif

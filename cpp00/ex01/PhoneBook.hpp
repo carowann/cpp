@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 12:31:47 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/03 15:14:04 by cwannhed         ###   ########.fr       */
+/*   Created: 2025/12/01 15:23:42 by cwannhed          #+#    #+#             */
+/*   Updated: 2025/12/01 16:52:14 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
-int main (int argc, char **argv)
+class PhoneBook
 {
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	else
-	{
-		for (int i = 1; i < argc; i++)
-		{
-			for(int j = 0; argv[i][j]; j++)
-				std::cout << static_cast<char>(std::toupper(argv[i][j]));
-		}
-		std::cout << std::endl;
-	}
-	return (0);
-}
+private:
+
+public:
+	PhoneBook(); //costruttore di default
+};
+
+#endif

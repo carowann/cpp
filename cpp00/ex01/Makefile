@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/12/01 12:31:52 by cwannhed          #+#    #+#              #
-#    Updated: 2025/12/03 14:18:14 by cwannhed         ###   ########.fr        #
+#    Created: 2025/12/01 15:21:52 by cwannhed          #+#    #+#              #
+#    Updated: 2025/12/01 15:25:56 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = phonebook
 
-CXX = c++
+CC = c++
 
 SRC = megaphone.cpp
 
@@ -22,7 +22,7 @@ all: $(NAME)
 
 $(NAME): $(SRC)
 	@echo "$(BLUE)Compiling $(NAME)...$(RESET)"
-	$(CXX) $(SRC) $(CXXFLAGS) -o $(NAME)
+	$(CC) $(SRC) $(CFLAGS) -o $(NAME)
 	@echo "$(GREEN)$(NAME) compiled successfully!$(RESET)"
 	@echo "$(CYAN)Run with: ./$(NAME)$(RESET)"
 
