@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+         #
+#    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 12:31:52 by cwannhed          #+#    #+#              #
-#    Updated: 2025/12/03 14:18:14 by cwannhed         ###   ########.fr        #
+#    Updated: 2025/12/05 18:26:54 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
