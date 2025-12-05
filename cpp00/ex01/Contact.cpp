@@ -3,10 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+        */
+/*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:23:37 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/01 15:23:38 by cwannhed         ###   ########.fr       */
+/*   Updated: 2025/12/05 18:23:09 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Contact.hpp"
+
+void	Contact::setFirstName(std::string name)
+{
+
+}

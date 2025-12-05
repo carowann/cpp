@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+         #
+#    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 15:21:52 by cwannhed          #+#    #+#              #
-#    Updated: 2025/12/01 15:25:56 by cwannhed         ###   ########.fr        #
+#    Updated: 2025/12/05 18:27:20 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,10 @@ NAME = phonebook
 
 CC = c++
 
-SRC = megaphone.cpp
+SRC = main.cpp \
+	PhoneBook.cpp \
+	Contact.cpp
+
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
