@@ -6,7 +6,7 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 15:21:52 by cwannhed          #+#    #+#              #
-#    Updated: 2025/12/05 18:27:20 by cwannhed         ###   ########.fr        #
+#    Updated: 2025/12/09 17:29:06 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,13 @@ SRC = main.cpp \
 	PhoneBook.cpp \
 	Contact.cpp
 
-
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 all: $(NAME)
 
 $(NAME): $(SRC)
 	@echo "$(BLUE)Compiling $(NAME)...$(RESET)"
-	$(CC) $(SRC) $(CFLAGS) -o $(NAME)
+	$(CC) $(SRC) $(CXXFLAGS) -o $(NAME)
 	@echo "$(GREEN)$(NAME) compiled successfully!$(RESET)"
 	@echo "$(CYAN)Run with: ./$(NAME)$(RESET)"
 

@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:23:33 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/05 18:23:00 by cwannhed         ###   ########.fr       */
+/*   Updated: 2025/12/09 17:41:34 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,13 @@ private:
 	std::string	_darkestSecret;
 
 public:
-	void	setFirstName(std::string name);
+	Contact();
+	void	setFirstName(std::string input);
+	void	setLastName(std::string input);
+	void	setNickName(std::string input);
+	void	setPhoneNumber(std::string input);
+	void	setSecret(std::string input);
+	std::string	getContactString();
 };
 
 
