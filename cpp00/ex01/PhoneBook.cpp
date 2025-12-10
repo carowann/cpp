@@ -6,11 +6,16 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:23:40 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/09 18:02:58 by cwannhed         ###   ########.fr       */
+/*   Updated: 2025/12/10 17:25:09 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
+PhoneBook::PhoneBook() : _contactCount(0)
+{
+	std::cout << "PhoneBook constructor" <<  std::endl;
+}
 
 void	printUsageMessage()
 {
@@ -21,56 +26,46 @@ void	printUsageMessage()
 	std::cout << "  • EXIT   - Quit program" << std::endl;
 }
 
-void	getValidInput()
+bool	getValidInput(std::string prompt, std::string &input)
 {
-std::getline(std::cin, input);
-	if (std::cin.eof())
-		return ;
+	input.clear();
+	while (true)
+	{
+		std::cout << prompt;
+		std::getline(std::cin, input);
+		if (std::cin.eof())
+			return (false);
+		if (!input.empty())
+			return (true);
+		std::cout << "Error: Field cannot be empty. Please try again." << std::endl;
+	}
+	return (true);
 }
 
 void	PhoneBook::addContact()
 {
-	static int	i = 0;
-	std::string input;
-	Contact &c = _contacts[i];
+	std::string	input = "";
+	Contact		&c = _contacts[_contactCount];
 
-	//TODO: check if input field is empty. if it's empty print error message and retry
-	std::cout << "Please input the first name: ";
-
+	std::cout << "\n=== Adding new contact ===\n" << std::endl;
+	if (!getValidInput("First name: ", input))
+		return;
 	c.setFirstName(input);
-
-	std::cout << "Please input the last name: ";
-	std::getline(std::cin, input);
-	if (std::cin.eof())
-		return ;
+	if (!getValidInput("Last name: ", input))
+		return;
 	c.setLastName(input);
-
-	std::cout << "Please input the nickname: ";
-	std::getline(std::cin, input);
-	if (std::cin.eof())
-		return ;
+	if (!getValidInput("Nickname: ", input))
+		return;
 	c.setNickName(input);
-
-	std::cout << "Please input the phone number: ";
-		std::getline(std::cin, input);
-	if (std::cin.eof())
-		return ;
+	if (!getValidInput("Phone number: ", input))
+		return;
 	c.setPhoneNumber(input);
-
-	std::cout << "Please input the darkest secret: ";
-		std::getline(std::cin, input);
-	if (std::cin.eof())
-		return ;
-	c.setSecret(input);
-	i++;
-	if (i == 8)
-		i = 0;
-	//prompt to input the information of the new contact one field at a time
-	// first name, last name, nickname, phone number, and darkest secret
-	//A saved contact can’t have empty fields.
-	// Once all the fields have been completed, add the contact to the phonebook
+	if (!getValidInput("Darkest secret: ", input))
+		return;
+	c.setDarkestSecret(input);
+	std::cout << "\nContact successfully added at index " << _contactCount << "!\n" << std::endl;
+	_contactCount = (_contactCount + 1 ) % 8;
 }
-
 
 void	PhoneBook::printPhoneBook()
 {
@@ -78,4 +73,27 @@ void	PhoneBook::printPhoneBook()
 	{
 		std::cout << _contacts[i].getContactString();
 	}
+}
+
+void	PhoneBook::displaySavedContacts()
+{
+	std::cout << "Displaying saved contacts..." << std::endl;
+	for (size_t i = 0; i < static_cast<size_t>(_contactCount); i++)
+	{
+		std::cout << "Index: " << i << " | "
+					<< "First Name: " << _contacts[i].getContactString() << " | "
+					<< "Last Name: " << _contacts[i].getContactString() << " | "
+					<< "Nickname: " << _contacts[i].getContactString() << std::endl;
+	}
+	//Display the saved contacts as a list of 4 columns: index, first name, last name and nickname.
+	//Each column must be 10 characters wide.  A pipe character (’|’) separates hem. The text must be right-aligned.
+	//If the text is longer than the column, it must be truncated and the last displayable character must be replaced by a dot (’.’)
+}
+void	PhoneBook::searchContact()
+{
+	std::cout << "Searching a new contact..." << std::endl;
+	displaySavedContacts();
+	// prompt the user again for the index of the entry to display
+	//If the index is out of range or wrong, define a relevant behavior
+	// Otherwise, display thE contact information, one field per line
 }

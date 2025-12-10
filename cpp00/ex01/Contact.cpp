@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:23:37 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/09 17:28:54 by cwannhed         ###   ########.fr       */
+/*   Updated: 2025/12/10 17:34:35 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,57 @@ Contact::Contact()
 	: _firstName(), _lastName(),
 		_nickname(), _phoneNumber(), _darkestSecret()
 {
-	std::cout << "Costruito er contatto" << std::endl;
+	std::cout << "Contact constructor" << std::endl;
 }
 
-void	Contact::setFirstName(std::string input)
+void	Contact::setFirstName(std::string name)
 {
-	_firstName = input;
+	if (!name.empty())
+		_firstName = name;
 }
 
-void	Contact::setLastName(std::string input)
+void	Contact::setLastName(std::string name)
 {
-	_lastName = input;
+	if (!name.empty())
+		_lastName = name;
 }
 
-
-void	Contact::setNickName(std::string input)
+void	Contact::setNickName(std::string name)
 {
-	_nickname = input;
+	if (!name.empty())
+		_nickname = name;
 }
 
-
-void	Contact::setPhoneNumber(std::string input)
+void	Contact::setPhoneNumber(std::string number)
 {
-	_phoneNumber = input;
+	if (!number.empty())
+		_phoneNumber = number;
 }
 
-void	Contact::setSecret(std::string input)
+void	Contact::setDarkestSecret(std::string secret)
 {
-	_darkestSecret = input;
+	if (!secret.empty())
+		_darkestSecret = secret;
+}
+
+std::string	Contact::getFirstName() const
+{
+	return (_firstName);
+}
+
+std::string	Contact::getLastName() const
+{
+	return (_lastName);
+}
+
+std::string	Contact::getNickName() const
+{
+	return (_nickname);
+}
+
+std::string	Contact::getFirstName() const
+{
+	return (_firstName);
 }
 
 std::string	Contact::getContactString()
