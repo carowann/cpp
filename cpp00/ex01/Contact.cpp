@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:23:37 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/10 17:34:35 by cwannhed         ###   ########.fr       */
+/*   Updated: 2025/12/17 13:56:56 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ Contact::Contact()
 {
 	std::cout << "Contact constructor" << std::endl;
 }
+
+//***************SETTERS****************//
 
 void	Contact::setFirstName(std::string name)
 {
@@ -49,6 +51,8 @@ void	Contact::setDarkestSecret(std::string secret)
 		_darkestSecret = secret;
 }
 
+//***************GETTERS****************//
+
 std::string	Contact::getFirstName() const
 {
 	return (_firstName);
@@ -62,11 +66,6 @@ std::string	Contact::getLastName() const
 std::string	Contact::getNickName() const
 {
 	return (_nickname);
-}
-
-std::string	Contact::getFirstName() const
-{
-	return (_firstName);
 }
 
 std::string	Contact::getContactString()

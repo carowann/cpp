@@ -6,7 +6,7 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 15:21:52 by cwannhed          #+#    #+#              #
-#    Updated: 2025/12/09 17:29:06 by cwannhed         ###   ########.fr        #
+#    Updated: 2025/12/17 13:59:40 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ CC = c++
 
 SRC = main.cpp \
 	PhoneBook.cpp \
+	PhoneBookAdd.cpp \
+	PhoneBookSearch.cpp \
 	Contact.cpp
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
