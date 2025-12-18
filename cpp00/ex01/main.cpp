@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 15:09:53 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/10 15:17:27 by cwannhed         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:45:55 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main()
 	printUsageMessage();
 	while (true)
 	{
-		std::cout << "Enter a command: ";
+		std::cout << "\nEnter a command: ";
 		std::getline(std::cin, input);
 		if (std::cin.eof() || input == "EXIT")
 		{
@@ -31,6 +31,8 @@ int	main()
 			phonebook.addContact();
 		else if (input == "SEARCH")
 			phonebook.searchContact();
+		else
+			std::cout << RED "Error. Invalid command" RESET << std::endl;
 	}
 	phonebook.printPhoneBook();
 	return (0);

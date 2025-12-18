@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:23:40 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/17 13:56:37 by cwannhed         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:43:13 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	PhoneBook::addContact()
 {
 	std::string	input = "";
-	Contact		&c = _contacts[_contactCount];
+	Contact		&c = _contacts[_lastIndex];
 
-	std::cout << "\n=== Adding new contact ===\n" << std::endl;
+	std::cout << GREEN "\n=== Adding new contact ===\n" RESET << std::endl;
 	if (!getValidInput("First name: ", input))
 		return;
 	c.setFirstName(input);
@@ -33,8 +33,10 @@ void	PhoneBook::addContact()
 	if (!getValidInput("Darkest secret: ", input))
 		return;
 	c.setDarkestSecret(input);
-	std::cout << "\nContact successfully added at index " << _contactCount << "!\n" << std::endl;
-	_contactCount = (_contactCount + 1 ) % 8;
+	std::cout << "\nContact successfully added at index " << _lastIndex << "!" << std::endl;
+	if (_contactCount < 8)
+		_contactCount++;
+	_lastIndex = (_lastIndex + 1 ) % 8;
 }
 
 bool	getValidInput(std::string prompt, std::string &input)
@@ -48,7 +50,7 @@ bool	getValidInput(std::string prompt, std::string &input)
 			return (false);
 		if (!input.empty())
 			return (true);
-		std::cout << "Error: Field cannot be empty. Please try again." << std::endl;
+		std::cout << RED "Error: Field cannot be empty. Please try again." RESET << std::endl;
 	}
 	return (true);
 }

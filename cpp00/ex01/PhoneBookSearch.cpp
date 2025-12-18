@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:44:59 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/17 17:43:15 by cwannhed         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:30:00 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	PhoneBook::searchContact()
 
 	if (_contactCount == 0)
 	{
-		std::cout << "Phonebook is empty.\n";
+		std::cout << "\nPhonebook is empty. Please add at least 1 contact first." << std::endl;
 		return ;
 	}
 	displaySavedContacts();
@@ -27,18 +27,10 @@ void	PhoneBook::searchContact()
 
 void	PhoneBook::displaySavedContacts()
 {
-	std::string values[N_INFO];
-
 	displayHeader();
 	std::cout << std::right; //right adjustment (adds fill characters to the left)
 	for (size_t i = 0; i < _contactCount; i++)
-	{
-		getFormattedValues(values, _contacts[i]);
-		std::cout << std::setw(WIDTH) << i << "|";
-		for (size_t j = 0; j < N_INFO; j++)
-			std::cout << std::setw(WIDTH) << values[j] << "|";
-		std::cout << std::endl;
-	}
+		printFormattedValues(i, _contacts[i]);
 }
 
 void	PhoneBook::displayHeader()
@@ -51,35 +43,57 @@ void	PhoneBook::displayHeader()
 			<< std::endl;
 }
 
-void	PhoneBook::getFormattedValues(std::string *value, Contact contact)
+void	PhoneBook::printFormattedValues(int index, Contact contact)
 {
-	static std::string (Contact::*functs[N_INFO])() const = {
-		&Contact::getFirstName,
-		&Contact::getLastName,
-		&Contact::getNickName };
+	std::cout << std::setw(WIDTH) << index << "|";
+	std::cout << std::setw(WIDTH) << formattedValue(contact.getFirstName()) << "|";
+	std::cout << std::setw(WIDTH) << formattedValue(contact.getLastName()) << "|";
+	std::cout << std::setw(WIDTH) << formattedValue(contact.getNickName()) << "|";
+	std::cout << std::endl;
+}
 
-	for (int i = 0; i < N_INFO; i++)
+std::string	PhoneBook::formattedValue(std::string value)
+{
+	if (value.length() > WIDTH)
 	{
-		value[i] = (contact.*functs[i])();
-		if (value[i].length() > WIDTH)
-		{
-			value[i].resize(WIDTH - 1);
-			value[i].append(".");
-		}
+		value.resize(WIDTH - 1);
+		value.append(".");
 	}
+	return (value);
 }
 
 bool	PhoneBook::findContact()
 {
-	size_t			index;
-	std::string		input;
+	int			index;
+	std::string	input;
+	char		extra;
 
-	std::cout << "\nPlease input index [0, " << _contactCount << ") of entry to display\n";
-	std::getline(std::cin, input);
-	std::istringstream	stream(input);
-	stream >> index;
-	if (index < 0 || index >= _contactCount)
+	extra = 0;
+	index = 0;
+	input = "";
+	std::cout << "\nPlease input index {";
+	for (int i = 0; i < static_cast<int>(_contactCount) - 1; i++)
+		std::cout << i << ", ";
+	std::cout << _contactCount - 1 << "}" << std::endl;
+	if (!std::getline(std::cin, input))
 		return (false);
+	std::istringstream	stream(input);
+	if (!(stream >> index))
+	{
+		std::cout << RED "Error. Invalid input: not a number" RESET<< std::endl;
+		return (false);
+	}
+	if (index < 0 || index >= static_cast<int>(_contactCount))
+	{
+		std::cout << RED "Error. Index out of range!" RESET << std::endl;
+		return (false);
+	}
+	stream >> extra;
+	if (extra)
+	{
+		std::cout << RED "Error. Extra characters after index input!" RESET << std::endl;
+		return (false);
+	}
 	std::cout << _contacts[index].getContactString();
 	return (true);
 }
