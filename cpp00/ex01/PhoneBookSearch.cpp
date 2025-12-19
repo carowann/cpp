@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:44:59 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/18 14:30:00 by cwannhed         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:04:06 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	PhoneBook::searchContact()
 void	PhoneBook::displaySavedContacts()
 {
 	displayHeader();
-	std::cout << std::right; //right adjustment (adds fill characters to the left)
+	std::cout << std::right;
 	for (size_t i = 0; i < _contactCount; i++)
 		printFormattedValues(i, _contacts[i]);
 }

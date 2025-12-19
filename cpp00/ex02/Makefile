@@ -5,24 +5,25 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/12/01 12:31:52 by cwannhed          #+#    #+#              #
-#    Updated: 2025/12/18 10:45:14 by cwannhed         ###   ########.fr        #
+#    Created: 2025/12/19 17:38:30 by cwannhed          #+#    #+#              #
+#    Updated: 2025/12/19 17:39:00 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = account
 
-CXX = c++
+CC = c++
 
-SRC = megaphone.cpp
+SRC = Account.cpp \
+	tests.cpp
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-all: $(NAME);
+all: $(NAME)
 
 $(NAME): $(SRC)
 	@echo "$(BLUE)Compiling $(NAME)...$(RESET)"
-	$(CXX) $(SRC) $(CXXFLAGS) -o $(NAME)
+	$(CC) $(SRC) $(CXXFLAGS) -o $(NAME)
 	@echo "$(GREEN)$(NAME) compiled successfully!$(RESET)"
 	@echo "$(CYAN)Run with: ./$(NAME)$(RESET)"
 

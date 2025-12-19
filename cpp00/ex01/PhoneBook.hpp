@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:23:42 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/18 14:40:15 by cwannhed         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:03:40 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 class PhoneBook
 {
 private:
-	Contact	_contacts[8]; //ad ogni istanza di phonebook vengono allocate automaticamente 8 istanze di contact
+	Contact	_contacts[8];
 	size_t	_contactCount;
 	size_t	_lastIndex;
 
