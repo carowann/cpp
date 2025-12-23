@@ -6,7 +6,7 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/22 13:13:44 by cwannhed          #+#    #+#              #
-#    Updated: 2025/12/22 13:15:11 by cwannhed         ###   ########.fr        #
+#    Updated: 2025/12/23 11:59:22 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,10 @@ NAME = brainz
 
 CC = c++
 
-SRC = main.c
+SRC = main.cpp \
+	Zombie.cpp \
+	newZombie.cpp \
+	randomChump.cpp
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 

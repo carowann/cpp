@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 13:16:30 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/22 19:44:03 by cwannhed         ###   ########.fr       */
+/*   Updated: 2025/12/23 11:22:06 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,15 @@
 Zombie::Zombie( std::string name)
 {
 	_name = name;
-	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	announce();
+}
+
+Zombie::~Zombie()
+{
+	std::cout << _name << " has retired." << std::endl;
+}
+
+void	Zombie::announce( void )
+{
+	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
