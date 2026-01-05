@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:23:37 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/17 13:56:56 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/01/05 11:47:52 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,41 @@ Contact::Contact()
 
 void	Contact::setFirstName(std::string name)
 {
-	if (!name.empty())
+	if (name.empty())
+		std::cout << "Error! Cannot be empty." << std::endl;
+	else
 		_firstName = name;
 }
 
 void	Contact::setLastName(std::string name)
 {
-	if (!name.empty())
+	if (name.empty())
+		std::cout << "Error! Cannot be empty." << std::endl;
+	else
 		_lastName = name;
 }
 
 void	Contact::setNickName(std::string name)
 {
-	if (!name.empty())
+	if (name.empty())
+		std::cout << "Error! Cannot be empty." << std::endl;
+	else
 		_nickname = name;
 }
 
 void	Contact::setPhoneNumber(std::string number)
 {
-	if (!number.empty())
+	if (number.empty())
+		std::cout << "Error! Cannot be empty." << std::endl;
+	else
 		_phoneNumber = number;
 }
 
 void	Contact::setDarkestSecret(std::string secret)
 {
-	if (!secret.empty())
+	if (secret.empty())
+		std::cout << "Error! Cannot be empty." << std::endl;
+	else
 		_darkestSecret = secret;
 }
 
