@@ -5,34 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/05 15:09:53 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/05 11:01:25 by cwannhed         ###   ########.fr       */
+/*   Created: 2025/12/22 13:15:19 by cwannhed          #+#    #+#             */
+/*   Updated: 2025/12/23 12:01:28 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "Zombie.hpp"
 
 int	main()
 {
-	PhoneBook	phonebook;
-	std::string	input;
+	Zombie	zombie1("Pippo");
+	Zombie	*zombie;
 
-	printUsageMessage();
-	while (true)
-	{
-		std::cout << "\nEnter a command: ";
-		std::getline(std::cin, input);
-		if (std::cin.eof() || input == "EXIT")
-		{
-			std::cout << "Exiting Phonebook..." << std::endl;
-			break;
-		}
-		else if (input == "ADD")
-			phonebook.addContact();
-		else if (input == "SEARCH")
-			phonebook.searchContact();
-		else
-			std::cout << RED "Error. Invalid command" RESET << std::endl;
-	}
+	zombie = NULL;
+	zombie = Zombie::newZombie("Pluto");
+	Zombie::randomChump("Zombie random");
+	delete zombie;
+	zombie = NULL;
 	return (0);
 }
