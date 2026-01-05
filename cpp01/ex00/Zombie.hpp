@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 13:16:32 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/23 11:58:25 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/01/05 16:38:03 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <string>
 # include <iostream>
+
+# define BLUE	"\033[0;34m"
+# define RESET	"\033[0m"
 
 class	Zombie
 {
