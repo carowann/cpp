@@ -6,7 +6,7 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/23 12:03:47 by cwannhed          #+#    #+#              #
-#    Updated: 2025/12/23 12:03:54 by cwannhed         ###   ########.fr        #
+#    Updated: 2026/01/05 17:51:33 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CC = c++
 
 SRC = main.cpp \
 	Zombie.cpp \
+	zombieHorde.cpp
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
