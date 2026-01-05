@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:23:40 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/12/18 14:43:13 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/01/05 12:04:09 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 void	PhoneBook::addContact()
 {
 	std::string	input = "";
-	Contact		&c = _contacts[_lastIndex];
+	Contact		&contact = _contacts[_lastIndex];
 
 	std::cout << GREEN "\n=== Adding new contact ===\n" RESET << std::endl;
 	if (!getValidInput("First name: ", input))
 		return;
-	c.setFirstName(input);
+	contact.setFirstName(input);
 	if (!getValidInput("Last name: ", input))
 		return;
-	c.setLastName(input);
+	contact.setLastName(input);
 	if (!getValidInput("Nickname: ", input))
 		return;
-	c.setNickName(input);
+	contact.setNickName(input);
 	if (!getValidInput("Phone number: ", input))
 		return;
-	c.setPhoneNumber(input);
+	contact.setPhoneNumber(input);
 	if (!getValidInput("Darkest secret: ", input))
 		return;
-	c.setDarkestSecret(input);
+	contact.setDarkestSecret(input);
 	std::cout << "\nContact successfully added at index " << _lastIndex << "!" << std::endl;
 	if (_contactCount < 8)
 		_contactCount++;
