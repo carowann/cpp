@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/23 12:04:09 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/12 11:43:17 by cwannhed         ###   ########.fr       */
+/*   Created: 2026/01/12 11:47:10 by cwannhed          #+#    #+#             */
+/*   Updated: 2026/01/12 13:13:53 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include "Weapon.hpp"
 
-# include <string>
-# include <iostream>
-
-# define BLUE	"\033[0;34m"
-# define RED	"\033[0;31m"
-# define RESET	"\033[0m"
-
-class	Zombie
+Weapon::Weapon(std::string type)
 {
-private:
-	std::string	_name;
+	_type = type;
+}
 
-public:
-	Zombie( void );
-	~Zombie( void );
+const std::string	&Weapon::getType() const
+{
+	return (_type);
+}
 
-	void			setName( std::string name  );
-	void			announce( void );
-	static Zombie*	zombieHorde( int N, std::string name );
-};
-
-#endif
+void	Weapon::setType( std::string type )
+{
+	if (!type.empty())
+		_type = type;
+}

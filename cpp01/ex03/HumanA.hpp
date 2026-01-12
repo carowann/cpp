@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/23 12:04:09 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/12 11:43:17 by cwannhed         ###   ########.fr       */
+/*   Created: 2026/01/12 11:56:11 by cwannhed          #+#    #+#             */
+/*   Updated: 2026/01/12 13:47:43 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-# include <string>
-# include <iostream>
+# include "Weapon.hpp"
+# include "iostream"
 
-# define BLUE	"\033[0;34m"
-# define RED	"\033[0;31m"
-# define RESET	"\033[0m"
-
-class	Zombie
+class HumanA
 {
 private:
 	std::string	_name;
-
+	Weapon		&_weapon;
 public:
-	Zombie( void );
-	~Zombie( void );
-
-	void			setName( std::string name  );
-	void			announce( void );
-	static Zombie*	zombieHorde( int N, std::string name );
+	HumanA( std::string name, Weapon &weapon );
+	void	attack();
 };
 
 #endif
