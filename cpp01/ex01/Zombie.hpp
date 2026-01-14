@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 12:04:09 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/12 11:43:17 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:16:19 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ public:
 	~Zombie( void );
 
 	void			setName( std::string name  );
-	void			announce( void );
+	void			announce( void ) const;
 	static Zombie*	zombieHorde( int N, std::string name );
 };
 

@@ -6,7 +6,7 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/13 16:40:53 by cwannhed          #+#    #+#              #
-#    Updated: 2026/01/13 16:41:22 by cwannhed         ###   ########.fr        #
+#    Updated: 2026/01/14 16:28:13 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = harl
 CC = c++
 
 SRC = main.cpp \
+	Harl.cpp
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 

@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 11:56:11 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/12 13:47:43 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:14:50 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ private:
 	Weapon		&_weapon;
 public:
 	HumanA( std::string name, Weapon &weapon );
-	void	attack();
+	void	attack() const;
 };
 
 #endif
