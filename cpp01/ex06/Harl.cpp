@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 16:39:23 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/14 17:31:03 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/01/14 17:39:37 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	Harl::error( void )
 	std::cout << std::endl;
 }
 
-Level	Harl::levelToCode( std::string level ) {
+Level	Harl::levelToCode( std::string level )
+{
 	if (level == "DEBUG")
 		return (DEBUG);
 	if (level == "INFO")
@@ -56,7 +57,8 @@ void	Harl::complain( std::string level )
 	Level	codeLevel;
 
 	codeLevel = Harl::levelToCode(level);
-	switch (codeLevel) {
+	switch (codeLevel)
+	{
 	case DEBUG:
 		Harl::debug();
 	case INFO:
