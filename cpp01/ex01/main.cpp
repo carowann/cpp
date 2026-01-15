@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 13:15:19 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/05 18:12:51 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:49:17 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main()
 	zombieName = "Castagna";
 	zombie = Zombie::zombieHorde(N, zombieName);
 	if (!zombie)
-		std::cout << RED "Error while allocating second zombie horde!" RESET << std::endl;
+		std::cout << RED "Error while allocating third zombie horde!" RESET << std::endl;
 	else
 	{
 		for (int i = 0; i < N ; i++)
@@ -62,7 +62,7 @@ int	main()
 	zombieName = "";
 	zombie = Zombie::zombieHorde(N, zombieName);
 	if (!zombie)
-		std::cout << RED "Error while allocating second zombie horde!" RESET << std::endl;
+		std::cout << RED "Error while allocating fourth zombie horde!" RESET << std::endl;
 	else
 	{
 		for (int i = 0; i < N ; i++)
