@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 16:39:37 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/22 11:25:12 by cwannhed         ###   ########.fr       */
+/*   Created: 2026/01/15 12:02:57 by cwannhed          #+#    #+#             */
+/*   Updated: 2026/01/15 12:39:09 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-int	main( int argc, char *argv[])
+# include <iostream>
+
+class Fixed
 {
-	if (argc != 2)
-	{
-		std::cerr << "Usage: ./harlFilter <level>" << std::endl;
-		return (1);
-	}
-	else
-	{
-		Harl	harl;
-		harl.complain(argv[1]);
-	}
-	return (0);
-}
+private:
+	int					_value;
+	static const int	_nFractBits;
+public:
+	Fixed();
+	Fixed(const Fixed &other);
+	Fixed &operator = ( const Fixed &other);
+	~Fixed();
+	int		getRawBits( void ) const;
+	void	setRawBits( int const raw);
+};
+
+#endif

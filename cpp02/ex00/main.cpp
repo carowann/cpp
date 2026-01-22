@@ -5,24 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 16:39:37 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/22 11:25:12 by cwannhed         ###   ########.fr       */
+/*   Created: 2026/01/15 12:39:36 by cwannhed          #+#    #+#             */
+/*   Updated: 2026/01/15 12:41:07 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include "Fixed.hpp"
 
-int	main( int argc, char *argv[])
+int main(void)
 {
-	if (argc != 2)
-	{
-		std::cerr << "Usage: ./harlFilter <level>" << std::endl;
-		return (1);
-	}
-	else
-	{
-		Harl	harl;
-		harl.complain(argv[1]);
-	}
-	return (0);
+	Fixed	a;
+	Fixed	b(a);
+	Fixed	c;
+
+	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return 0;
 }

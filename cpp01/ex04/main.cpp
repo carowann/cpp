@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 14:14:41 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/13 16:18:58 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:22:57 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char *argv[])
 		return (1);
 	}
 	s2 = argv[3];
-	std::ifstream inFile(fileName.c_str(), std::ifstream::in);
+	std::ifstream inFile(fileName.c_str());
 	if (!inFile.is_open())
 	{
 		std::cerr << RED "Failed to open file: " << fileName << RESET << std::endl;
