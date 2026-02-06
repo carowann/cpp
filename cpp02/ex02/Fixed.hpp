@@ -7,8 +7,8 @@
 class Fixed
 {
 private:
-	int					_value;
-	static const int	_nFractBits;
+	int					_rawBits;
+	static const int	_fractionalBits;
 
 public:
 	//OCF

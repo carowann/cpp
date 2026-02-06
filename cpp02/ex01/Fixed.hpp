@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:39:45 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/22 16:28:28 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/06 17:27:55 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class Fixed
 {
 private:
-	int					_value;
-	static const int	_nFractBits;
+	int					_rawBits;
+	static const int	_fractionalBits;
 
 public:
 	//OCF

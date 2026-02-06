@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:02:57 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/22 15:00:59 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/06 17:31:14 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 
 # include <iostream>
 
-class Fixed
-{
+class Fixed {
 private:
-	int					_value;
-	static const int	_nFractBits;
+	int _rawBits;
+	static const int _fractionalBits;
 
 public:
 	Fixed();

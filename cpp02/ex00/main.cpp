@@ -6,14 +6,13 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:39:36 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/01/15 12:41:07 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/06 17:29:14 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-int main(void)
-{
+int main(void) {
 	Fixed	a;
 	Fixed	b(a);
 	Fixed	c;
