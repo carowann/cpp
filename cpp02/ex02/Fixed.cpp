@@ -6,14 +6,14 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:34:24 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/06 17:23:51 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/06 18:44:29 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Fixed.hpp"
 
-const int	Fixed::_nFractBits = 8;
+const int	Fixed::_fractionalBits = 8;
 
 /* ------------------------------------ Orthodox canonical form ----------------------------------- */
 Fixed::Fixed() : _rawBits(0) {
@@ -38,11 +38,11 @@ Fixed::~Fixed() {
 /* ------------------------------------ Other constructors ----------------------------------- */
 
 Fixed::Fixed(const int value) {
-	_rawBits = value << _fractionalBits
+	_rawBits = value << _fractionalBits;
 }
 
 Fixed::Fixed(const float value) {
-	_rawBits = roundf(value * (1 << _nFractBits));
+	_rawBits = roundf(value * (1 << _fractionalBits));
 }
 
 /* ------------------------------------ Getters and setters ----------------------------------- */
@@ -61,11 +61,11 @@ void Fixed::setRawBits(int const raw) {
 /* ------------------------------------ Member functions ----------------------------------- */
 
 float	Fixed::toFloat(void) const {
-	return ((float)_rawBits / (1 << _nFractBits));
+	return ((float)_rawBits / (1 << _fractionalBits));
 }
 
 int	Fixed::toInt(void) const {
-	return (_rawBits >> _nFractBits);
+	return (_rawBits >> _fractionalBits);
 }
 
 /* ------------------------------------ Overload comparison operators ----------------------------------- */
