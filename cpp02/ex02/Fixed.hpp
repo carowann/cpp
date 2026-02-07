@@ -38,14 +38,17 @@ public:
 	Fixed	operator*(const Fixed &other) const;
 	Fixed	operator/(const Fixed &other) const;
 	// Overload increment operators
-	Fixed	operator++(void) const;
-	Fixed	operator++(int) const;
+	Fixed	&operator++(void);
+	Fixed	operator++(int);
 	// Overload decrement operators
-	Fixed	operator--(void) const;
-	Fixed	operator--(int) const;
+	Fixed	&operator--(void);
+	Fixed	operator--(int);
+
+	static Fixed	&min(Fixed &a, Fixed &b);
+	static Fixed	&min(Fixed const &a, Fixed const&b);
 };
 
 // MUST be non-member function because the left operand is the stream:
-std::ostream& operator<<(std::ostream& os, const Fixed& obj);
+std::ostream&	operator<<(std::ostream& os, const Fixed& obj);
 
 #endif

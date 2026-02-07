@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:34:24 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/07 11:54:37 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/07 18:15:57 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,21 @@
 const int	Fixed::_fractionalBits = 8;
 
 /* ------------------------------------ Orthodox canonical form ----------------------------------- */
+
 Fixed::Fixed() : _rawBits(0) {
-	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &other) {
-	std::cout << "Copy constructor called" << std::endl;
-	_rawBits = other.getRawBits();
+Fixed::Fixed(const Fixed &other) : _rawBits(other._rawBits) {
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other) {
-		this->_rawBits = other.getRawBits();
+		_rawBits = other._rawBits;
 	}
 	return (*this);
 }
 
 Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
 }
 
 /* ------------------------------------ Other constructors ----------------------------------- */
@@ -115,32 +111,31 @@ Fixed	Fixed::operator/(const Fixed &other) const {
 
 /* ---------------------- Overload increment operators ---------------------- */
 
-Fixed	Fixed::operator++(void) const {
-	return Fixed(this->toFloat() + 1);
+Fixed	&Fixed::operator++ (void) {
+	this->_rawBits++;
+	return (*this);
 }
 
-Fixed	Fixed::operator++(int) const {
+Fixed	Fixed::operator++(int) {
 	Fixed old = *this;
 
-	operator++();
+	this->_rawBits++;
 	return (old);
 }
 
 /* ---------------------- Overload decrement operators ---------------------- */
 
-// Fixed	&Fixed::operator--(void) const {
-// 	Fixed	result;
+Fixed	&Fixed::operator-- (void) {
+	this->_rawBits--;
+	return (*this);
+}
 
-// 	result._rawBits--;
-// 	return (result);
-// }
+Fixed	Fixed::operator--(int) {
+	Fixed old = *this;
 
-// Fixed	Fixed::operator--(int) const {
-// 	Fixed old = *this;
-
-// 	operator--();
-// 	return (old);
-// }
+	this->_rawBits--;
+	return (old);
+}
 
 /* ------------------------------------ Non-member functions ----------------------------------- */
 

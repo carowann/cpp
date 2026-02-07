@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:40:25 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/07 16:03:50 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/07 16:26:23 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,14 @@ Fixed::Fixed() : _rawBits(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &other) {
+Fixed::Fixed(const Fixed &other) : _rawBits(other._rawBits) {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = other;
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other) {
-		this->_rawBits = other._rawBits;
+		_rawBits = other._rawBits;
 	}
 	return (*this);
 }
@@ -40,14 +39,11 @@ Fixed::~Fixed() {
 /* ------------------------------------ Getters and setters ----------------------------------- */
 
 int Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (_rawBits);
 }
 
 void Fixed::setRawBits(int const raw) {
-	std::cout << "setRawBits member function called" << std::endl;
-	if (raw)
-		_rawBits = raw;
+	_rawBits = raw;
 }
 
 /* ------------------------------------ Other constructors ----------------------------------- */
