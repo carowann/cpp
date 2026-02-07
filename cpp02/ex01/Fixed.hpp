@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:39:45 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/06 17:27:55 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/07 11:00:53 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ public:
 	Fixed(const Fixed &other);
 	Fixed &operator=(const Fixed &other);
 	~Fixed();
-
+	/* -------------------------------------------------------------------------- */
 	Fixed(const int value);
 	Fixed(const float value);
+	// Getters and setters
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
+	// Converters
 	float	toFloat(void) const;
 	int		toInt(void) const;
 };

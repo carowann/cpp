@@ -26,45 +26,19 @@ The modules follow the **C++98 standard** as required by the 42 curriculum, prov
 ## 📁 Repository Structure
 ```
 cpp/
-├── cpp00/    # 🎯 Introduction to C++
-├── cpp01/    # 💾 Memory and references
-├── cpp02/    # ⚙️ Operator overloading
-├── cpp03/    # 🔗 Inheritance (in progress)
-├── cpp04/    # 🎭 Polymorphism
-├── cpp05/    # ⚠️ Exceptions
-├── cpp06/    # 🔄 Type casting
-├── cpp07/    # 📐 Templates
-├── cpp08/    # 📦 STL containers
-└── cpp09/    # 🏆 Advanced STL
+├── cpp00/    # Introduction to C++
+├── cpp01/    # Memory and references
+├── cpp02/    # Operator overloading
+├── cpp03/    # Inheritance (in progress)
+├── cpp04/    # Polymorphism
+├── cpp05/    # Exceptions
+├── cpp06/    # Type casting
+├── cpp07/    # Templates
+├── cpp08/    # STL containers
+└── cpp09/    # Advanced STL
 ```
 
 Each module contains multiple exercises with increasing complexity, typically named `ex00`, `ex01`, `ex02`, etc.
-
-## 💡 Concepts Covered So Far
-
-### 🎯 CPP 00 - Basics
-- Namespaces and classes
-- Member functions and attributes
-- `this` keyword
-- Initialization lists
-- `const` correctness
-- Static vs instance members
-- Input/output streams
-
-### 💾 CPP 01 - Memory and References
-- Stack vs heap allocation
-- References vs pointers
-- Memory management with `new`/`delete`
-- Pointers to member functions
-- File streams
-
-### ⚙️ CPP 02 - Operator Overloading
-- Fixed-point number representation
-- Operator overloading
-- Orthodox Canonical Form (OCF)
-- Copy constructor and assignment operator
-- Increment/decrement operators
-- Comparison operators
 
 ## 🚀 Installation & Usage
 
@@ -72,12 +46,10 @@ Each module is self-contained with its own Makefile.
 
 ### Building
 ```bash
-git clone --recursive https://github.com/carowann/cpp.git
+git clone https://github.com/carowann/cpp.git
 cd cpp/cpp0X/exXX  # Navigate to specific module and exercise
 make
 ```
-
-> **Note:** The `--recursive` flag ensures any submodules (like libft where used) are cloned properly.
 
 ### Running
 
@@ -101,33 +73,14 @@ All exercises follow the **42 C++ coding standards**, including:
 
 ## 🎓 Learning Journey
 
-These modules represent a significant learning curve, transitioning from procedural C programming to object-oriented C++. 
-
-### Key learnings so far:
-
-1. **Understanding classes and encapsulation** - Moving from structs and functions to cohesive objects
-2. **Mastering memory management** - Learning RAII and when to use stack vs heap
-3. **Operator overloading** - Making custom types behave like built-in types
-4. **The Orthodox Canonical Form** - Understanding when and why deep copies are necessary
-5. **Reference semantics** - Grasping the differences and use cases for references vs pointers
+These modules represent a significant learning curve, transitioning from procedural C programming to object-oriented C++.
 
 ## 🔧 Challenges & Insights
 
-The transition from C to C++ has required unlearning some habits while building new mental models. 
-
-**Notable challenges so far:**
-
-- Understanding the subtleties of the Orthodox Canonical Form and copy semantics
-- Balancing between member functions and helper functions
-- Learning when to use references vs pointers vs values
-- Writing proper constructors and avoiding uninitialized members
-- Debugging implicit conversions and operator precedence
+The transition from C to C++ has required unlearning some habits while building new mental models.
 
 > 💭 *The exercises are carefully designed to expose common pitfalls and force engagement with language mechanics rather than just syntax.*
 
-## 🔄 Current Work
-
-I'm currently progressing through **CPP 03**, exploring inheritance and class hierarchies. The modules continue to build complexity while reinforcing previously learned concepts.
 
 ## 🙏 Acknowledgments
 
