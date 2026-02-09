@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:34:24 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/07 18:15:57 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/09 17:48:26 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,36 @@ Fixed	Fixed::operator--(int) {
 
 	this->_rawBits--;
 	return (old);
+}
+
+/* -------------------------------------------------------------------------- */
+
+Fixed	&Fixed::min(Fixed &a, Fixed &b) {
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
+const Fixed	&Fixed::min(Fixed const &a, Fixed const &b) {
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
+Fixed	&Fixed::max(Fixed &a, Fixed &b) {
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
+
+const Fixed	&Fixed::max(Fixed const &a, Fixed const &b) {
+	if (a > b)
+		return (a);
+	else
+		return (b);
 }
 
 /* ------------------------------------ Non-member functions ----------------------------------- */

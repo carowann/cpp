@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/09 16:42:19 by cwannhed          #+#    #+#             */
+/*   Updated: 2026/02/09 17:48:40 by cwannhed         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
@@ -25,30 +37,28 @@ public:
 	// Converters
 	float	toFloat(void) const;
 	int		toInt(void) const;
-	// Overload comparison operators
+	// Overload operators
 	bool	operator>(const Fixed &other) const;
 	bool	operator<(const Fixed &other) const;
 	bool	operator>=(const Fixed &other) const;
 	bool	operator<=(const Fixed &other) const;
 	bool	operator==(const Fixed &other) const;
 	bool	operator!=(const Fixed &other) const;
-	// Overload arithmetic operators
 	Fixed	operator+(const Fixed &other) const;
 	Fixed	operator-(const Fixed &other) const;
 	Fixed	operator*(const Fixed &other) const;
 	Fixed	operator/(const Fixed &other) const;
-	// Overload increment operators
 	Fixed	&operator++(void);
 	Fixed	operator++(int);
-	// Overload decrement operators
 	Fixed	&operator--(void);
 	Fixed	operator--(int);
-
-	static Fixed	&min(Fixed &a, Fixed &b);
-	static Fixed	&min(Fixed const &a, Fixed const&b);
+	//
+	static Fixed		&min(Fixed &a, Fixed &b);
+	static const Fixed	&min(Fixed const &a, Fixed const&b);
+	static Fixed		&max(Fixed &a, Fixed &b);
+	static const Fixed	&max(Fixed const &a, Fixed const&b);
 };
 
-// MUST be non-member function because the left operand is the stream:
 std::ostream&	operator<<(std::ostream& os, const Fixed& obj);
 
 #endif
