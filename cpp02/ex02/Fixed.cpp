@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:34:24 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/09 17:48:26 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/10 11:11:39 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,22 +94,38 @@ bool	Fixed::operator!=(const Fixed &other) const {
 /* -------------------- Overload arithmetic operators -------------------- */
 
 Fixed	Fixed::operator+(const Fixed &other) const {
-	return Fixed(this->toFloat() + other.toFloat());
+	Fixed	result;
+
+	result._rawBits = this->_rawBits + other._rawBits;
+	return (result);
 }
 
 Fixed	Fixed::operator-(const Fixed &other) const {
-	return Fixed(this->toFloat() - other.toFloat());
+	Fixed	result;
+
+	result._rawBits = this->_rawBits - other._rawBits;
+	return (result);
 }
 
-Fixed	Fixed::operator*(const Fixed &other) const {
-	return Fixed(this->toFloat() * other.toFloat());
+Fixed Fixed::operator*(const Fixed &other) const {
+	Fixed	result;
+	long	temp;
+
+	temp = static_cast<long>(this->_rawBits) * static_cast<long>(other._rawBits);
+	result._rawBits = static_cast<int>(temp >> _fractionalBits);
+	return (result);
 }
 
-Fixed	Fixed::operator/(const Fixed &other) const {
-	return Fixed(this->toFloat() / other.toFloat());
+Fixed Fixed::operator/(const Fixed &other) const {
+	Fixed	result;
+	long	temp;
+
+	temp = (static_cast<long>(this->_rawBits) << _fractionalBits) / static_cast<long>(other._rawBits);
+	result._rawBits = static_cast<int>(temp);
+	return (result);
 }
 
-/* ---------------------- Overload increment operators ---------------------- */
+/* ---------------------- Overload increment/decrement operators ---------------------- */
 
 Fixed	&Fixed::operator++ (void) {
 	this->_rawBits++;
@@ -122,8 +138,6 @@ Fixed	Fixed::operator++(int) {
 	this->_rawBits++;
 	return (old);
 }
-
-/* ---------------------- Overload decrement operators ---------------------- */
 
 Fixed	&Fixed::operator-- (void) {
 	this->_rawBits--;
