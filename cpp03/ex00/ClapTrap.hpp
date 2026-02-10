@@ -6,15 +6,14 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 17:58:11 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/09 18:58:32 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/10 14:06:24 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
-# include <string>
-# include <iostream>
+# include "ClapTrap.h"
 
 class ClapTrap {
 private:
@@ -25,11 +24,15 @@ private:
 public:
 	//OCF
 	ClapTrap();
-	//copy constr
-	//overload assegnazione
+	ClapTrap(const ClapTrap &other);
+	ClapTrap &operator=(const ClapTrap &other);
 	~ClapTrap();
-
+	//
 	ClapTrap(std::string name);
+	//
+	void	attack(const std::string& target);
+	void	takeDamage(unsigned int amount);
+	void	beRepaired(unsigned int amount);
 };
 
 
