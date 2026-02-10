@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 17:58:11 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/10 17:51:27 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/10 17:26:41 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ClapTrap.h"
 
 class ClapTrap {
-private:
+protected:
 	std::string _name;
 	unsigned int			_hitPoints;
 	unsigned int			_energyPoints;
@@ -24,13 +24,13 @@ private:
 public:
 	//OCF
 	ClapTrap();
-	ClapTrap(ClapTrap const &other);
-	ClapTrap &operator=(ClapTrap const &other);
+	ClapTrap(const ClapTrap &other);
+	ClapTrap &operator=(const ClapTrap &other);
 	~ClapTrap();
 	//
-	ClapTrap(std::string const &name);
+	ClapTrap(std::string name);
 	//
-	void	attack(std::string const &target);
+	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 };

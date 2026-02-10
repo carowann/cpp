@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 17:58:21 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/10 17:52:02 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/10 17:52:46 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* ------------------------------------ OCF ----------------------------------- */
 
-ClapTrap::ClapTrap() :	_name("ClapTrap"),
+ClapTrap::ClapTrap() :	_name("Default"),
 						_hitPoints(10),
 						_energyPoints(10),
 						_attackDamage(0) {
@@ -45,7 +45,7 @@ ClapTrap::~ClapTrap() {
 
 /* -------------------------------------------------------------------------- */
 
-ClapTrap::ClapTrap(std::string const &name) : _name(name),
+ClapTrap::ClapTrap(std::string name) : _name(name),
 										_hitPoints(10),
 										_energyPoints(10),
 										_attackDamage(0) {
