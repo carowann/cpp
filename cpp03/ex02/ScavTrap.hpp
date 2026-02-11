@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 16:59:03 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/10 17:50:39 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/11 14:11:43 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class ScavTrap : public ClapTrap
 {
 public:
 	//OCF
-	ScavTrap(/* args */);
+	ScavTrap();
 	ScavTrap(ScavTrap const &other);
 	ScavTrap &operator=(ScavTrap const &other);
 	~ScavTrap();

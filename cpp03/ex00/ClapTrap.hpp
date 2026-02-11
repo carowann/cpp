@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 17:58:11 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/10 17:51:27 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/11 14:19:22 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ public:
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 };
-
 
 #endif

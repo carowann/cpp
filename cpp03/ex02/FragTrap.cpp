@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 12:42:03 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/11 13:07:49 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/11 14:09:55 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,4 @@ FragTrap::FragTrap(std::string const &name) : ClapTrap(name) {
 void	FragTrap::highFivesGuys(void) {
 	std::cout << BOLD << "**HIGH FIVE!**" << RESET << std::endl;
 }
+
