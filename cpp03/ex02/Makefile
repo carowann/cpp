@@ -6,7 +6,7 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/09 17:57:48 by cwannhed          #+#    #+#              #
-#    Updated: 2026/02/11 12:28:13 by cwannhed         ###   ########.fr        #
+#    Updated: 2026/02/11 13:05:53 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CC = c++
 
 SRC = main.cpp \
 	ClapTrap.cpp \
-	ScavTrap.cpp
+	ScavTrap.cpp \
+	FragTrap.cpp
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
