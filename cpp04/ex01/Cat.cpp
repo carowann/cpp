@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:37:20 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/12 16:10:28 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/13 12:36:19 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ Cat::Cat() : Animal() {
 
 Cat::Cat(Cat const &other) : Animal(other) {
 	std::cout << "Cat copy constructor called" << std::endl;
-	*this = other;
+	_brain = new Brain(*other._brain);
 }
 
 Cat	&Cat::operator=(Cat const &other) {
 	std::cout << "Cat copy assignment operator called" << std::endl;
 	if (this != &other) {
 		type = other.type;
-		_brain = new Brain(*other._brain);
+		*_brain = *other._brain;
 	}
 	return (*this);
 }
