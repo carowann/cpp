@@ -1,48 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/11 16:15:19 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/13 15:10:43 by cwannhed         ###   ########.fr       */
+/*   Created: 2026/02/11 16:37:20 by cwannhed          #+#    #+#             */
+/*   Updated: 2026/02/13 15:05:55 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Cat.hpp"
 
 /* ------------------------------------ OCF ----------------------------------- */
 
-Animal::Animal() : type("") {
-	std::cout << "Animal default constructor called" << std::endl;
+Cat::Cat() : AAnimal() {
+	std::cout << "Cat default constructor called" << std::endl;
+	type = "Cat";
+	_brain = new Brain;
 }
 
-Animal::Animal(Animal const &other) {
-	std::cout << "Animal copy constructor called" << std::endl;
-	type = other.type;
+Cat::Cat(Cat const &other) : AAnimal(other) {
+	std::cout << "Cat copy constructor called" << std::endl;
+	_brain = new Brain(*other._brain);
 }
 
-Animal	&Animal::operator=(Animal const &other) {
-	std::cout << "Animal copy assignment operator called" << std::endl;
-	if (this != &other)
+Cat	&Cat::operator=(Cat const &other) {
+	std::cout << "Cat copy assignment operator called" << std::endl;
+	if (this != &other) {
 		type = other.type;
+		*_brain = *other._brain;
+	}
 	return (*this);
 }
 
-Animal::~Animal() {
-	std::cout << "Animal destructor called" << std::endl;
+Cat::~Cat() {
+	std::cout << "Cat destructor called" << std::endl;
+	delete this->_brain;
 }
 
 /* -------------------------------------------------------------------------- */
 
-std::string Animal::getType(void) const {
-	return (type);
+Brain	*Cat::getBrain() const {
+	return (this->_brain);
 }
 
 /* -------------------------------------------------------------------------- */
 
-void	Animal::makeSound() const {
-	std::cout << "Boink!" << std::endl;
+void	Cat::makeSound() const {
+	std::cout << "Miao!" << std::endl;
 }
-
