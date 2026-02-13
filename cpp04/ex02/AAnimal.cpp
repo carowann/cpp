@@ -40,9 +40,4 @@ std::string AAnimal::getType(void) const {
 	return (type);
 }
 
-/* -------------------------------------------------------------------------- */
-
-void	AAnimal::makeSound() const {
-	std::cout << "Boink!" << std::endl;
-}
 

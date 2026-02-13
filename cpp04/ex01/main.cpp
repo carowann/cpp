@@ -6,21 +6,19 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:35:24 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/13 14:59:47 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:52:50 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
 
-int main()
+int	main()
 {
-	std::cout << "\n" << BOLD << BLUE << "=== TEST 1: Array of Animals ===" << RESET << std::endl;
+	std::cout << "\n" << BLUE << "=== TEST 1: Array of Animals ===" << RESET << std::endl;
 	{
-		const int SIZE = 6;
-		Animal *animals[SIZE];
+		const int	SIZE = 6;
+		Animal		*animals[SIZE];
 
 		for (int i = 0; i < SIZE; i++) {
 			std::cout << "\n" << GREEN << "Creating animal " << i << ":" << RESET << std::endl;
@@ -32,7 +30,7 @@ int main()
 
 		std::cout << "\n" << BOLD << "Testing makeSound:" << RESET << std::endl;
 		for (int i = 0; i < SIZE; i++) {
-			std::cout << animals[i]->getType() << " says: ";
+			std::cout << animals[i]->getType() << ": ";
 			animals[i]->makeSound();
 		}
 
@@ -43,16 +41,16 @@ int main()
 		}
 	}
 
-	std::cout << "\n" << BOLD << BLUE << "=== TEST 2: Deep Copy - Copy Constructor ===" << RESET << std::endl;
+	std::cout << "\n" << BLUE << "=== TEST 2: Deep Copy - Copy Constructor ===" << RESET << std::endl;
 	{
 		std::cout << "\n" << GREEN << "Creating original Dog:" << RESET << std::endl;
-		Dog original;
+		Dog	original;
 		original.getBrain()->setIdea(0, "I love bones");
 		original.getBrain()->setIdea(1, "Chase the mailman");
 		original.getBrain()->setIdea(2, "Bark at cats");
 
 		std::cout << "\n" << GREEN << "Creating copy via copy constructor:" << RESET << std::endl;
-		Dog copy = original;
+		Dog copy(original);
 
 		std::cout << "\n" << BOLD << "Original Brain ideas:" << RESET << std::endl;
 		std::cout << "  [0]: " << original.getBrain()->getIdea(0) << std::endl;

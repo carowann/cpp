@@ -6,19 +6,17 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:35:24 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/13 15:17:13 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:59:40 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 
 int main()
 {
 	// AAnimal a;
-	std::cout << "\n" << BOLD << BLUE << "=== TEST 1: Array of AAnimals ===" << RESET << std::endl;
+	std::cout << "\n" << BLUE << "=== TEST 1: Array of AAnimals ===" << RESET << std::endl;
 	{
 		const int SIZE = 6;
 		AAnimal *AAnimals[SIZE];
@@ -37,14 +35,14 @@ int main()
 			AAnimals[i]->makeSound();
 		}
 
-		std::cout << "\n" << BOLD << RED << "Deleting all AAnimals:" << RESET << std::endl;
+		std::cout << "\n" << RED << "Deleting all AAnimals:" << RESET << std::endl;
 		for (int i = 0; i < SIZE; i++) {
 			std::cout << "\nDeleting AAnimal " << i << ":" << std::endl;
 			delete AAnimals[i];
 		}
 	}
 
-	std::cout << "\n" << BOLD << BLUE << "=== TEST 2: Deep Copy - Copy Constructor ===" << RESET << std::endl;
+	std::cout << "\n" << BLUE << "=== TEST 2: Deep Copy - Copy Constructor ===" << RESET << std::endl;
 	{
 		std::cout << "\n" << GREEN << "Creating original Dog:" << RESET << std::endl;
 		Dog original;
@@ -87,7 +85,7 @@ int main()
 		std::cout << "\n" << RED << "Destroying both Dogs:" << RESET << std::endl;
 	}
 
-	std::cout << "\n" << BOLD << BLUE << "=== TEST 3: Deep Copy - Assignment Operator ===" << RESET << std::endl;
+	std::cout << "\n" << BLUE << "=== TEST 3: Deep Copy - Assignment Operator ===" << RESET << std::endl;
 	{
 		std::cout << "\n" << GREEN << "Creating two Dogs:" << RESET << std::endl;
 		Dog dog1;
@@ -121,7 +119,7 @@ int main()
 		std::cout << "\n" << RED << "Destroying both Dogs:" << RESET << std::endl;
 	}
 
-	std::cout << "\n" << BOLD << BLUE << "=== TEST 4: Scope Test (tmp destroyed, original survives) ===" << RESET << std::endl;
+	std::cout << "\n" << BLUE << "=== TEST 4: Scope Test (tmp destroyed, original survives) ===" << RESET << std::endl;
 	{
 		std::cout << "\n" << GREEN << "Creating basic Dog:" << RESET << std::endl;
 		Dog basic;
