@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:08:25 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/14 19:38:14 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/16 14:42:02 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,28 @@ private:
 	std::string const	_name;
 	int					_grade;
 public:
+	//OCF
 	Bureaucrat();
 	Bureaucrat(Bureaucrat const &other);
 	Bureaucrat	&operator=(Bureaucrat const &other);
 	~Bureaucrat();
+	//
 	Bureaucrat(std::string name, int grade);
+	//getters
 	std::string	getName() const;
 	int			getGrade() const;
+	//
 	void		incrementGrade();
 	void		decrementGrade();
+	//exceptions
+	class GradeTooHighException : public std::exception {
+	public:
+		virtual const char*	what() const throw();
+	};
+	class GradeTooLowException : public std::exception {
+	public:
+		virtual const char*	what() const throw();
+	};
 };
 
 std::ostream	&operator<<(std::ostream &os, Bureaucrat const &obj);
