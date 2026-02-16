@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:08:25 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/16 17:53:02 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/16 17:53:14 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ public:
 	//
 	void		incrementGrade();
 	void		decrementGrade();
+	void		signForm();
 	//exceptions
 	class GradeTooHighException : public std::exception {
 	public:
