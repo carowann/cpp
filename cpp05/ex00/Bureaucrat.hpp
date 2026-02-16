@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:08:25 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/16 14:42:02 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/16 16:49:43 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <string>
 # include <iostream>
+
+# define RED	"\033[0;31m"
+# define BOLD	"\033[1m"
+# define RESET	"\033[0m"
 
 class Bureaucrat
 {
@@ -28,7 +32,7 @@ public:
 	Bureaucrat	&operator=(Bureaucrat const &other);
 	~Bureaucrat();
 	//
-	Bureaucrat(std::string name, int grade);
+	Bureaucrat(std::string const &name, int grade);
 	//getters
 	std::string	getName() const;
 	int			getGrade() const;

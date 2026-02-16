@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:18:19 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/16 14:46:43 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/16 16:48:52 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ Bureaucrat::~Bureaucrat() {}
 
 /* -------------------------------------------------------------------------- */
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
-
+Bureaucrat::Bureaucrat(std::string const &name, int grade) : _name(name) {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
@@ -47,10 +46,14 @@ int	Bureaucrat::getGrade() const {
 
 void	Bureaucrat::incrementGrade() {
 	_grade--;
+	if (_grade < 1)
+		throw Bureaucrat::GradeTooHighException();
 }
 
 void	Bureaucrat::decrementGrade() {
 	_grade++;
+	if (_grade > 150)
+		throw Bureaucrat::GradeTooLowException();
 }
 
 /* -------------------------------------------------------------------------- */
