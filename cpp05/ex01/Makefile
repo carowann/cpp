@@ -6,7 +6,7 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/14 19:06:44 by cwannhed          #+#    #+#              #
-#    Updated: 2026/02/14 19:07:24 by cwannhed         ###   ########.fr        #
+#    Updated: 2026/02/17 11:22:40 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CC = c++
 
 SRC = main.cpp \
 	Bureaucrat.cpp \
+	Form.cpp
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 

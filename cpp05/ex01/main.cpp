@@ -6,144 +6,186 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:07:40 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/16 16:49:59 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/17 11:36:55 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-#include "Bureaucrat.hpp"
 
 void	testHeader(std::string const &testName) {
 	std::cout << BOLD << "\n==================== " << testName << " ====================" << RESET << std::endl;
 }
 
+void	printOk(std::string const &msg) {
+	std::cout << GREEN << "[OK] " << RESET << msg << std::endl;
+}
+
+void	printFail(std::string const &msg) {
+	std::cout << RED << "[FAIL] " << RESET << msg << std::endl;
+}
+
 int	main() {
-
-	// Test 1: Valid construction
-	testHeader("TEST 1: Valid Bureaucrat Creation");
+	// ── TEST 1: Valid Form creation ──────────────────────────────────────────
+	testHeader("TEST 1: Valid Form Creation");
 	try {
-		Bureaucrat b1("Alice", 75);
-		std::cout << b1 << std::endl;
+		Form f1("Tax Return", 50, 100);
+		printOk("Created: " + f1.getName());
+		std::cout << CYAN << f1 << RESET << std::endl;
 
-		Bureaucrat b2("Bob", 1);
-		std::cout << b2 << std::endl;
+		Form f2("Presidential Pardon", 1, 1);
+		printOk("Created: " + f2.getName());
+		std::cout << CYAN << f2 << RESET << std::endl;
 
-		Bureaucrat b3("Charlie", 150);
-		std::cout << b3 << std::endl;
+		Form f3("Coffee Request", 150, 150);
+		printOk("Created: " + f3.getName());
+		std::cout << CYAN << f3 << RESET << std::endl;
 	}
 	catch (std::exception &e) {
-		std::cerr << RED << "Unexpected exception: " << e.what() << RESET << std::endl;
+		printFail(std::string("Unexpected exception: ") + e.what());
 	}
 
-	// Test 2: Construction with invalid grade (too high)
-	testHeader("TEST 2: Construction with Grade 0 (Too High)");
+	// ── TEST 2: Form grade too high (grade 0) ───────────────────────────────
+	testHeader("TEST 2: Form gradeToSign 0 (Too High)");
 	try {
-		Bureaucrat invalid("Invalid", 0);
+		Form invalid("Invalid", 0, 50);
+		printFail("No exception thrown — should have thrown!");
 		std::cout << invalid << std::endl;
 	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cerr << RED << "Exception caught: " << e.what() << RESET << std::endl;
+	catch (Form::GradeTooHighException &e) {
+		printOk(std::string("Correct exception: ") + e.what());
 	}
 	catch (std::exception &e) {
-		std::cerr << RED << "Wrong exception: " << e.what() << RESET << std::endl;
+		printFail(std::string("Wrong exception type: ") + e.what());
 	}
 
-	// Test 3: Construction with invalid grade (too low)
-	testHeader("TEST 3: Construction with Grade 151 (Too Low)");
+	// ── TEST 3: Form grade too low (grade 151) ──────────────────────────────
+	testHeader("TEST 3: Form gradeToExecute 151 (Too Low)");
 	try {
-		Bureaucrat invalid("Invalid", 151);
+		Form invalid("Invalid", 50, 151);
+		printFail("No exception thrown — should have thrown!");
 		std::cout << invalid << std::endl;
 	}
-	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cerr << RED << "Exception caught: " << e.what() << RESET << std::endl;
+	catch (Form::GradeTooLowException &e) {
+		printOk(std::string("Correct exception: ") + e.what());
 	}
 	catch (std::exception &e) {
-		std::cerr << RED << "Wrong exception: " << e.what() << RESET << std::endl;
+		printFail(std::string("Wrong exception type: ") + e.what());
 	}
 
-	// Test 4: Increment from grade 2 to 1 (valid)
-	testHeader("TEST 4: Increment Grade 2 -> 1 (Valid)");
+	// ── TEST 4: signForm — success ──────────────────────────────────────────
+	testHeader("TEST 4: signForm Success (Grade High Enough)");
 	try {
-		Bureaucrat b("David", 2);
-		std::cout << "Before: " << b << std::endl;
-		b.incrementGrade();
-		std::cout << "After:  " << b << std::endl;
+		Bureaucrat b("Alice", 10);
+		Form f("Budget Approval", 10, 50);
+		std::cout << CYAN << b << RESET << std::endl;
+		std::cout << CYAN << f << RESET << std::endl;
+		b.signForm(f);
+		if (f.getIsSigned())
+			printOk("Form is now signed");
+		else
+			printFail("Form should be signed but isn't");
 	}
 	catch (std::exception &e) {
-		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
+		printFail(std::string("Unexpected exception: ") + e.what());
 	}
 
-	// Test 5: Increment from grade 1 (should throw)
-	testHeader("TEST 5: Increment Grade 1 (Should Throw)");
+	// ── TEST 5: signForm — grade exactly equal to required ──────────────────
+	testHeader("TEST 5: signForm Exact Grade (Boundary)");
 	try {
-		Bureaucrat b("Eve", 1);
-		std::cout << "Before: " << b << std::endl;
-		b.incrementGrade();
-		std::cout << "After:  " << b << std::endl; // This should not print
-	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cerr << RED << "Exception caught: " << e.what() << RESET << std::endl;
-	}
-
-	// Test 6: Decrement from grade 149 to 150 (valid)
-	testHeader("TEST 6: Decrement Grade 149 -> 150 (Valid)");
-	try {
-		Bureaucrat b("Frank", 149);
-		std::cout << "Before: " << b << std::endl;
-		b.decrementGrade();
-		std::cout << "After:  " << b << std::endl;
+		Bureaucrat b("Bob", 42);
+		Form f("Expense Report", 42, 100);
+		std::cout << CYAN << b << RESET << std::endl;
+		std::cout << CYAN << f << RESET << std::endl;
+		b.signForm(f);
+		if (f.getIsSigned())
+			printOk("Form signed at exact boundary grade");
+		else
+			printFail("Form should be signed at exact boundary");
 	}
 	catch (std::exception &e) {
-		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
+		printFail(std::string("Unexpected exception: ") + e.what());
 	}
 
-	// Test 7: Decrement from grade 150 (should throw)
-	testHeader("TEST 7: Decrement Grade 150 (Should Throw)");
+	// ── TEST 6: signForm — failure (grade too low) ───────────────────────────
+	testHeader("TEST 6: signForm Failure (Grade Too Low)");
 	try {
-		Bureaucrat b("Grace", 150);
-		std::cout << "Before: " << b << std::endl;
-		b.decrementGrade();
-		std::cout << "After:  " << b << std::endl; // This should not print
+		Bureaucrat b("Charlie", 150);
+		Form f("Top Secret", 1, 1);
+		std::cout << CYAN << b << RESET << std::endl;
+		std::cout << CYAN << f << RESET << std::endl;
+		b.signForm(f);  // signForm handles the exception internally and prints the message
+		if (!f.getIsSigned())
+			printOk("Form correctly not signed");
+		else
+			printFail("Form should not be signed");
 	}
-	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cerr << RED << "Exception caught: " << e.what() << RESET << std::endl;
+	catch (std::exception &e) {
+		printFail(std::string("Unexpected exception leaked: ") + e.what());
 	}
 
-	// Test 8: Copy constructor and assignment operator
-	testHeader("TEST 8: OCF - Copy Constructor & Assignment");
+	// ── TEST 7: signForm — already signed ───────────────────────────────────
+	testHeader("TEST 7: signForm Already Signed");
 	try {
-		Bureaucrat original("Henry", 42);
-		std::cout << "Original: " << original << std::endl;
+		Bureaucrat b("Diana", 1);
+		Form f("Old Form", 50, 50);
+		b.signForm(f);
+		std::cout << YELLOW << "Signing again..." << RESET << std::endl;
+		b.signForm(f);  // should just sign again (or stay signed)
+		if (f.getIsSigned())
+			printOk("Form remains signed");
+	}
+	catch (std::exception &e) {
+		printFail(std::string("Unexpected exception: ") + e.what());
+	}
 
-		Bureaucrat copy(original);
-		std::cout << "Copy:     " << copy << std::endl;
+	// ── TEST 8: Form OCF ─────────────────────────────────────────────────────
+	testHeader("TEST 8: Form OCF - Copy Constructor & Assignment");
+	try {
+		Form original("Original Form", 42, 80);
+		std::cout << YELLOW << "Original: " << RESET << original << std::endl;
 
-		Bureaucrat assigned("Temp", 100);
+		Form copy(original);
+		std::cout << YELLOW << "Copy:     " << RESET << copy << std::endl;
+
+		Form assigned("Temp", 1, 1);
 		assigned = original;
-		std::cout << "Assigned: " << assigned << std::endl;
+		std::cout << YELLOW << "Assigned: " << RESET << assigned << std::endl;
 
-		// Verify independence
-		original.incrementGrade();
-		std::cout << "\nAfter incrementing original:" << std::endl;
-		std::cout << "Original: " << original << std::endl;
-		std::cout << "Copy:     " << copy << " (should be unchanged)" << std::endl;
-		std::cout << "Assigned: " << assigned << " (should be unchanged)" << std::endl;
+		// Sign the original and verify copies are unaffected
+		Bureaucrat b("Eve", 1);
+		original.beSigned(b);
+		std::cout << std::endl;
+		std::cout << YELLOW << "After signing original:" << RESET << std::endl;
+		std::cout << "Original (signed=" << original.getIsSigned() << "): " << original << std::endl;
+		std::cout << "Copy     (signed=" << copy.getIsSigned() << "): " << copy << " <- should be unsigned" << std::endl;
+		std::cout << "Assigned (signed=" << assigned.getIsSigned() << "): " << assigned << " <- should be unsigned" << std::endl;
+
+		if (!copy.getIsSigned() && !assigned.getIsSigned())
+			printOk("Copy and assigned are independent from original");
+		else
+			printFail("Copy or assigned was affected by signing original");
 	}
 	catch (std::exception &e) {
-		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
+		printFail(std::string("Exception: ") + e.what());
 	}
 
-	// Test 9: Default constructor
-	testHeader("TEST 9: Default Constructor");
+	// ── TEST 9: Default constructors ────────────────────────────────────────
+	testHeader("TEST 9: Default Constructors");
 	try {
-		Bureaucrat def;
-		std::cout << def << std::endl;
+		Bureaucrat defB;
+		std::cout << CYAN << defB << RESET << std::endl;
+		printOk("Default Bureaucrat created");
+
+		Form defF;
+		std::cout << CYAN << defF << RESET << std::endl;
+		printOk("Default Form created");
 	}
 	catch (std::exception &e) {
-		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
+		printFail(std::string("Exception: ") + e.what());
 	}
 
-	std::cout << "\n============= ALL TESTS COMPLETE =============" << std::endl;
+	std::cout << BOLD << "\n============= ALL TESTS COMPLETE =============" << RESET << std::endl;
 	return (0);
 }

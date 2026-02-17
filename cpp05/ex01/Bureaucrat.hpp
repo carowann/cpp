@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:08:25 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/16 17:53:14 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/17 11:29:19 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 
 # include <string>
 # include <iostream>
+# include "Form.hpp"
 
 # define RED	"\033[0;31m"
 # define BOLD	"\033[1m"
 # define RESET	"\033[0m"
+# define GREEN	"\033[0;32m"
+# define YELLOW	"\033[0;33m"
+# define CYAN	"\033[0;36m"
+
+class Form;
 
 class Bureaucrat
 {
@@ -39,7 +45,7 @@ public:
 	//
 	void		incrementGrade();
 	void		decrementGrade();
-	void		signForm();
+	void		signForm(Form &f);
 	//exceptions
 	class GradeTooHighException : public std::exception {
 	public:

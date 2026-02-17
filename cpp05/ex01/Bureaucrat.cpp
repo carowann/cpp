@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:18:19 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/16 17:54:25 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/17 10:35:03 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade) : _name(name) {
 	if (grade < 1)
-		throw Bureaucrat::GradeTooHighException();
+		throw (Bureaucrat::GradeTooHighException());
 	if (grade > 150)
-		throw Bureaucrat::GradeTooLowException();
+		throw (Bureaucrat::GradeTooLowException());
 	_grade = grade;
 }
 
@@ -49,17 +49,25 @@ int	Bureaucrat::getGrade() const {
 void	Bureaucrat::incrementGrade() {
 	_grade--;
 	if (_grade < 1)
-		throw Bureaucrat::GradeTooHighException();
+		throw (Bureaucrat::GradeTooHighException());
 }
 
 void	Bureaucrat::decrementGrade() {
 	_grade++;
 	if (_grade > 150)
-		throw Bureaucrat::GradeTooLowException();
+		throw (Bureaucrat::GradeTooLowException());
 }
 
-// void	Bureaucrat::signForm();
-
+void Bureaucrat::signForm(Form &f) {
+	try {
+		f.beSigned(*this);
+		std::cout << _name << " signed " << f.getName() << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << _name << " couldn't sign " << f.getName()
+		<< " because " << e.what() << std::endl;
+	}
+}
 
 /* -------------------------------------------------------------------------- */
 
