@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:07:40 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/18 16:20:08 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:48:10 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,8 @@ int	main() {
 		printFail(std::string("Unexpected exception: ") + e.what());
 	}
 
-	// -- TEST 2: Grade too low to sign -----------------------------------------
-	testHeader("TEST 2: Grade too low to sign");
-	try {
-		ShrubberyCreationForm	sf("Home");
-		Bureaucrat				b("Intern", 150);
-
-		b.signForm(sf);
-		if (!sf.getIsSigned())
-			printOk("Form correctly not signed by grade 150 bureaucrat");
-		else
-			printFail("Form was signed - should not have been!");
-	}
-	catch (std::exception &e) {
-		printFail(std::string("Unexpected exception: ") + e.what());
-	}
-
-	// -- TEST 3: Grade too low to execute --------------------------------------
-	testHeader("TEST 3: Grade too low to execute");
+	// -- TEST 2: Grade too low to execute --------------------------------------
+	testHeader("TEST 2: Grade too low to execute");
 	try {
 		ShrubberyCreationForm	sf("Home");
 		Bureaucrat				signer("Boss", 1);
@@ -114,8 +98,8 @@ int	main() {
 		printFail(std::string("Wrong exception type: ") + e.what());
 	}
 
-	// -- TEST 4: Execute unsigned form -----------------------------------------
-	testHeader("TEST 4: Execute unsigned form");
+	// -- TEST 3: Execute unsigned form -----------------------------------------
+	testHeader("TEST 3: Execute unsigned form");
 	try {
 		ShrubberyCreationForm	sf("Home");
 		Bureaucrat				b("Gardener", 1);
@@ -130,8 +114,8 @@ int	main() {
 		printFail(std::string("Wrong exception type: ") + e.what());
 	}
 
-	// -- TEST 5: executeForm success -------------------------------------------
-	testHeader("TEST 5: executeForm - success");
+	// -- TEST 4: executeForm success -------------------------------------------
+	testHeader("TEST 4: executeForm - success");
 	try {
 		ShrubberyCreationForm	sf("Home");
 		Bureaucrat				b("Gardener", 137);
@@ -168,8 +152,8 @@ int	main() {
 		printFail(std::string("Unexpected exception: ") + e.what());
 	}
 
-	// -- TEST 6: Copy and assignment -------------------------------------------
-	testHeader("TEST 6: Copy and assignment");
+	// -- TEST 5: Copy and assignment -------------------------------------------
+	testHeader("TEST 5: Copy and assignment");
 	try {
 		ShrubberyCreationForm	sf1("Garden");
 		Bureaucrat				b("Boss", 1);

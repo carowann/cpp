@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:08:25 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/16 17:53:02 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/18 12:17:51 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ public:
 	//exceptions
 	class GradeTooHighException : public std::exception {
 	public:
-		virtual const char*	what() const throw();
+		virtual const char*	what() const throw(); 
 	};
 	class GradeTooLowException : public std::exception {
 	public:
