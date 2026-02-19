@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 17:05:31 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/18 17:57:22 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/19 14:17:17 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Intern
 public:
 	//OCF
 	Intern();
-	Intern(Intern const &other);
-	Intern &operator=(Intern const &other);
+	Intern(Intern const &);
+	Intern &operator=(Intern const &);
 	~Intern();
 	//
 	AForm	*makeForm(std::string name, std::string form);

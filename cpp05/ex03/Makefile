@@ -6,7 +6,7 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/14 19:06:44 by cwannhed          #+#    #+#              #
-#    Updated: 2026/02/18 16:08:22 by cwannhed         ###   ########.fr        #
+#    Updated: 2026/02/19 14:15:56 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC = main.cpp \
 	AForm.cpp \
 	ShrubberyCreationForm.cpp \
 	RobotomyRequestForm.cpp \
-	PresidentialPardonForm.cpp
+	PresidentialPardonForm.cpp \
+	Intern.cpp
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
