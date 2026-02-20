@@ -6,11 +6,13 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:18:19 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/17 10:35:03 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/20 13:43:30 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+/* ------------------------------------ OCF ----------------------------------- */
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 

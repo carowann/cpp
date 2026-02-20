@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:07:40 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/19 14:24:00 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/20 13:46:34 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,156 +30,104 @@ void	printFail(std::string const &msg) {
 
 int	main() {
 
-	// -- TEST 1: Valid Forms creation w/ makeForm -------------------------------------------
-	testHeader("TEST 1: Valid Forms Creation w/ makeForm");
-	try {
-		Intern	someRandomIntern;
-		AForm	*scf;
-		scf = someRandomIntern.makeForm("shrubbery creation", "Home");
+	// -- TEST 1: Intern creates all 3 valid forms ----------------------------------
+	testHeader("TEST 1: Intern creates all 3 valid forms");
+	{
+		Intern	intern;
+		AForm	*scf = intern.makeForm("shrubbery creation", "Home");
+		AForm	*rrf = intern.makeForm("robotomy request", "Bender");
+		AForm	*ppf = intern.makeForm("presidential pardon", "Pluto");
 
-		printOk("Created: " + scf->getName());
-		std::cout << CYAN << *scf << RESET << std::endl;
+		if (scf) { printOk("ShrubberyCreationForm created: " + scf->getName()); delete scf; }
+		else printFail("ShrubberyCreationForm not created!");
 
-		AForm	*rrf;
+		if (rrf) { printOk("RobotomyRequestForm created: " + rrf->getName()); delete rrf; }
+		else printFail("RobotomyRequestForm not created!");
 
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		printOk("Created: " + rrf->getName());
-		std::cout << CYAN << *rrf << RESET << std::endl;
-
-		AForm	*ppf;
-		ppf = someRandomIntern.makeForm("presidential pardon", "Pluto");
-		printOk("Created: " + ppf->getName());
-		std::cout << CYAN << *ppf << RESET << std::endl;
-
-		delete scf;
-		delete rrf;
-		delete ppf;
-	}
-	catch (std::exception &e) {
-		printFail(std::string("Unexpected exception: ") + e.what());
+		if (ppf) { printOk("PresidentialPardonForm created: " + ppf->getName()); delete ppf; }
+		else printFail("PresidentialPardonForm not created!");
 	}
 
-	// // -- TEST 2: Grade too low to execute --------------------------------------
-	// testHeader("TEST 2: Grade too low to execute");
-	// try {
-	// 	ShrubberyCreationForm	sf("Home");
-	// 	Bureaucrat				signer("Boss", 1);
-	// 	Bureaucrat				executor("Intern", 150);
+	// -- TEST 2: Invalid form name -------------------------------------------------
+	testHeader("TEST 2: Invalid form name");
+	{
+		Intern	intern;
+		AForm	*f = intern.makeForm("coffee request", "Bender");
+		if (f == NULL)
+			printOk("NULL returned for unknown form name - correct!");
+		else {
+			printFail("Should have returned NULL!");
+			delete f;
+		}
+	}
 
-	// 	signer.signForm(sf);
-	// 	sf.execute(executor);
-	// 	printFail("No exception thrown - should have thrown!");
-	// }
-	// catch (AForm::GradeTooLowException &e) {
-	// 	printOk(std::string("Correct exception caught: ") + e.what());
-	// }
-	// catch (std::exception &e) {
-	// 	printFail(std::string("Wrong exception type: ") + e.what());
-	// }
+	// -- TEST 3: Intern OCF --------------------------------------------------------
+	testHeader("TEST 3: Intern OCF (copy + assignment)");
+	{
+		Intern	a;
+		Intern	b(a);
+		Intern	c;
+		c = a;
+		AForm	*f = b.makeForm("presidential pardon", "Arthur Dent");
+		if (f) { printOk("Copy of Intern works correctly"); delete f; }
+		AForm	*f2 = c.makeForm("robotomy request", "Marvin");
+		if (f2) { printOk("Assigned Intern works correctly"); delete f2; }
+	}
 
-	// try {
-	// 	RobotomyRequestForm		rf("Pippo");
-	// 	Bureaucrat				signer("Boss", 1);
-	// 	Bureaucrat				executor("Intern", 150);
+	// -- TEST 4: Sign + execute via Bureaucrat ------------------------------------
+	testHeader("TEST 4: Intern creates form, Bureaucrat signs and executes");
+	{
+		Intern		intern;
+		Bureaucrat	b("Boss", 1);
 
-	// 	signer.signForm(rf);
-	// 	rf.execute(executor);
-	// 	printFail("No exception thrown - should have thrown!");
-	// }
-	// catch (AForm::GradeTooLowException &e) {
-	// 	printOk(std::string("Correct exception caught: ") + e.what());
-	// }
-	// catch (std::exception &e) {
-	// 	printFail(std::string("Wrong exception type: ") + e.what());
-	// }
+		AForm	*scf = intern.makeForm("shrubbery creation", "Garden");
+		if (scf) {
+			b.signForm(*scf);
+			b.executeForm(*scf);
+			printOk("ShrubberyCreationForm - check Garden_shrubbery file!");
+			delete scf;
+		}
 
-	// try {
-	// 	PresidentialPardonForm	pf("Pasquale");
-	// 	Bureaucrat				signer("Boss", 1);
-	// 	Bureaucrat				executor("Intern", 150);
+		AForm	*rrf = intern.makeForm("robotomy request", "Bender");
+		if (rrf) {
+			b.signForm(*rrf);
+			b.executeForm(*rrf);
+			delete rrf;
+		}
 
-	// 	signer.signForm(pf);
-	// 	pf.execute(executor);
-	// 	printFail("No exception thrown - should have thrown!");
-	// }
-	// catch (AForm::GradeTooLowException &e) {
-	// 	printOk(std::string("Correct exception caught: ") + e.what());
-	// }
-	// catch (std::exception &e) {
-	// 	printFail(std::string("Wrong exception type: ") + e.what());
-	// }
+		AForm	*ppf = intern.makeForm("presidential pardon", "Zaphod");
+		if (ppf) {
+			b.signForm(*ppf);
+			b.executeForm(*ppf);
+			delete ppf;
+		}
+	}
 
-	// // -- TEST 3: Execute unsigned form -----------------------------------------
-	// testHeader("TEST 3: Execute unsigned form");
-	// try {
-	// 	ShrubberyCreationForm	sf("Home");
-	// 	Bureaucrat				b("Gardener", 1);
+	// -- TEST 5: Execute without signing ------------------------------------------
+	testHeader("TEST 5: Execute unsigned form");
+	{
+		Intern		intern;
+		Bureaucrat	b("Boss", 1);
+		AForm		*rrf = intern.makeForm("robotomy request", "Bender");
+		if (rrf) {
+			b.executeForm(*rrf);
+			delete rrf;
+		}
+	}
 
-	// 	sf.execute(b);
-	// 	printFail("No exception thrown - should have thrown!");
-	// }
-	// catch (AForm::NotSignedException &e) {
-	// 	printOk(std::string("Correct exception caught: ") + e.what());
-	// }
-	// catch (std::exception &e) {
-	// 	printFail(std::string("Wrong exception type: ") + e.what());
-	// }
-
-	// // -- TEST 4: executeForm success -------------------------------------------
-	// testHeader("TEST 4: executeForm - success");
-	// try {
-	// 	ShrubberyCreationForm	sf("Home");
-	// 	Bureaucrat				b("Gardener", 137);
-
-	// 	b.signForm(sf);
-	// 	b.executeForm(sf);
-	// 	printOk("ShrubberyCreationForm executed - check Home_shrubbery file!");
-	// }
-	// catch (std::exception &e) {
-	// 	printFail(std::string("Unexpected exception: ") + e.what());
-	// }
-
-	// try {
-	// 	RobotomyRequestForm		rf("Pippo");
-	// 	Bureaucrat				b("Robot", 45);
-
-	// 	b.signForm(rf);
-	// 	b.executeForm(rf);
-	// 	printOk("RobotomyRequestForm executed successfully!");
-	// }
-	// catch (std::exception &e) {
-	// 	printFail(std::string("Unexpected exception: ") + e.what());
-	// }
-
-	// try {
-	// 	PresidentialPardonForm	pf("Pasquale");
-	// 	Bureaucrat				b("President", 5);
-
-	// 	b.signForm(pf);
-	// 	b.executeForm(pf);
-	// 	printOk("PresidentialPardonForm executed successfully!");
-	// }
-	// catch (std::exception &e) {
-	// 	printFail(std::string("Unexpected exception: ") + e.what());
-	// }
-
-	// // -- TEST 5: Copy and assignment -------------------------------------------
-	// testHeader("TEST 5: Copy and assignment");
-	// try {
-	// 	ShrubberyCreationForm	sf1("Garden");
-	// 	Bureaucrat				b("Boss", 1);
-	// 	b.signForm(sf1);
-
-	// 	ShrubberyCreationForm	sf2(sf1);
-	// 	printOk("Copy constructor OK - isSigned: " + std::string(sf2.getIsSigned() ? "true" : "false"));
-
-	// 	ShrubberyCreationForm	sf3("Other");
-	// 	sf3 = sf1;
-	// 	printOk("Assignment operator OK - isSigned: " + std::string(sf3.getIsSigned() ? "true" : "false"));
-	// }
-	// catch (std::exception &e) {
-	// 	printFail(std::string("Unexpected exception: ") + e.what());
-	// }
+	// -- TEST 6: Grade too low to execute -----------------------------------------
+	testHeader("TEST 6: Grade too low to execute");
+	{
+		Intern		intern;
+		Bureaucrat	signer("Signer", 1);
+		Bureaucrat	weakExec("WeakExec", 150);
+		AForm		*rrf = intern.makeForm("robotomy request", "Bender");
+		if (rrf) {
+			signer.signForm(*rrf);
+			weakExec.executeForm(*rrf);
+			delete rrf;
+		}
+	}
 
 	return (0);
 }
