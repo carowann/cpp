@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/23 12:04:08 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/24 16:49:41 by cwannhed         ###   ########.fr       */
+/*   Created: 2026/02/24 16:47:34 by cwannhed          #+#    #+#             */
+/*   Updated: 2026/02/24 16:49:25 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#ifndef UTILS_HPP
+# define UTILS_HPP
 
-# include "utils.hpp"
+# include <string>
+# include <iostream>
+# include <exception>
+# include <cstdlib>
+# include <iomanip>
+# include <climits>
+# include <cfloat>
+# include <cmath>
 
-class ScalarConverter
-{
-private:
-	//OCF
-	ScalarConverter();
-	ScalarConverter(ScalarConverter const &);
-	ScalarConverter	&operator=(ScalarConverter const &);
-	~ScalarConverter();
-public:
-	static void	convert(std::string toConvert);
-
-};
+bool	toDouble(std::string const &s, double &out);
+void	printChar(double value);
+void	printInt(double value);
+void	printFloat(double value);
+void	printDouble(double value);
 
 #endif
