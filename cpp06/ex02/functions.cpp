@@ -6,14 +6,13 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 15:00:59 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/24 16:33:35 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/24 16:39:18 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "functions.hpp"
 
 Base *generate(void) {
-	srand(time(NULL));
 	int	r = rand() % 3;
 	if (r == 0)
 		return (new A());
