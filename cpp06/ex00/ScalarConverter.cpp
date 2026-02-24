@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 12:05:08 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/24 12:19:10 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/24 12:41:05 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool ScalarConverter::toDouble(std::string const &s, double &out) {
 		return (true);
 	if (*end == '\0')
 		return (true);
-	return false;
+	return (false);
 }
 
 void ScalarConverter::printChar(double value) {
@@ -82,19 +82,12 @@ void ScalarConverter::printFloat(double value) {
 		std::cout << "float: impossible" << std::endl;
 	else
 		std::cout << "float: " << std::fixed << std::setprecision(1)
-					<< static_cast<float>(value) << "f" << std::endl;
+				<< static_cast<float>(value) << "f" << std::endl;
 }
 
 void ScalarConverter::printDouble(double value) {
-	std::cout << "double: " << std::fixed << std::setprecision(1) << value << std::endl;
-}
-
-void ScalarConverter::printPseudo(std::string const &s) {
-	std::cout << "char: impossible" << std::endl;
-	std::cout << "int: impossible" << std::endl;
-	std::string base = s;
-	if (base[base.size() - 1] == 'f')
-		base = base.substr(0, base.size() - 1);
-	std::cout << "float: " << base << "f" << std::endl;
-	std::cout << "double: " << base << std::endl;
+	if (std::isnan(value) || std::isinf(value))
+		std::cout << "double: " << value << std::endl;
+	else
+		std::cout << "double: " << std::fixed << std::setprecision(1) << value << std::endl;
 }
