@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 12:04:08 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/23 13:22:59 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/24 12:12:20 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,28 @@
 # include <iostream>
 # include <exception>
 # include <cstdlib>
+# include <iomanip>
+# include <climits>
+# include <cfloat>
+# include <cmath>
 
 class ScalarConverter
 {
 private:
-	/* data */
-public:
 	//OCF
 	ScalarConverter();
 	ScalarConverter(ScalarConverter const &);
 	ScalarConverter	&operator=(ScalarConverter const &);
 	~ScalarConverter();
-	//
+public:
 	static void	convert(std::string toConvert);
+	static bool	toDouble(std::string const &s, double &out);
+	static void	printPseudo(std::string const &s);
+	static void	printChar(double value);
+	static void	printInt(double value);
+	static void	printFloat(double value);
+	static void	printDouble(double value);
+
 };
 
 #endif
