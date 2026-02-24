@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 12:04:08 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/24 16:49:41 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/24 17:00:58 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ private:
 	ScalarConverter(ScalarConverter const &);
 	ScalarConverter	&operator=(ScalarConverter const &);
 	~ScalarConverter();
+
+
 public:
 	static void	convert(std::string toConvert);
-
 };
 
 #endif

@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/24 16:49:53 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/24 16:50:32 by cwannhed         ###   ########.fr       */
+/*   Created: 2026/02/24 16:55:50 by cwannhed          #+#    #+#             */
+/*   Updated: 2026/02/24 17:00:30 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.hpp"
 
-
-bool toDouble(std::string const &s, double &out) {
+bool	toDouble(std::string const &s, double &out) {
 	char	*end;
 
 	if (s.size() == 1 && !std::isdigit(static_cast<unsigned char>(s[0]))) {
@@ -28,7 +27,7 @@ bool toDouble(std::string const &s, double &out) {
 	return (false);
 }
 
-void printChar(double value) {
+void	printChar(double value) {
 	if (std::isnan(value) || std::isinf(value) || value < 0 || value > 127)
 		std::cout << "char: impossible" << std::endl;
 	else if (!std::isprint(static_cast<int>(value)))
@@ -37,14 +36,14 @@ void printChar(double value) {
 		std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
 }
 
-void printInt(double value) {
+void	printInt(double value) {
 	if (std::isnan(value) || std::isinf(value) || value < INT_MIN || value > INT_MAX)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(value) << std::endl;
 }
 
-void printFloat(double value) {
+void	printFloat(double value) {
 	if (std::isnan(value) || std::isinf(value))
 		std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
 	else if (value > FLT_MAX || value < -FLT_MAX)
@@ -54,7 +53,7 @@ void printFloat(double value) {
 				<< static_cast<float>(value) << "f" << std::endl;
 }
 
-void printDouble(double value) {
+void	printDouble(double value) {
 	if (std::isnan(value) || std::isinf(value))
 		std::cout << "double: " << value << std::endl;
 	else

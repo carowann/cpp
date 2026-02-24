@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 12:05:08 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/24 16:50:42 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/24 16:56:04 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,5 @@ void ScalarConverter::convert(std::string toConvert) {
 	printFloat(value);
 	printDouble(value);
 }
+
+/* -------------------------------------------------------------------------- */

@@ -6,7 +6,7 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/23 12:03:09 by cwannhed          #+#    #+#              #
-#    Updated: 2026/02/23 12:31:29 by cwannhed         ###   ########.fr        #
+#    Updated: 2026/02/24 17:01:18 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = convert
 CC = c++
 
 SRC = main.cpp \
-	ScalarConverter.cpp
+	ScalarConverter.cpp \
+	utils.cpp
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
