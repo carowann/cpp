@@ -6,11 +6,13 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 17:37:34 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/24 17:53:01 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/02/25 14:11:33 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "whatever.hpp"
+#include <string>
+#include <iostream>
 
 int main(void)
 {
