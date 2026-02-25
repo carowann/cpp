@@ -1,0 +1,35 @@
+# Compiled objects
+*.o
+*.obj
+**/bin/
+**/out/
+*.out
+
+# Executables
+*.exe
+*.elf
+
+# Dependencies
+*.d
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build directories
+build/
+cmake_build/
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# CMake
+CMakeUserPresets.json
+
+cpp07/ex00/whatever
+cpp07/ex01/iter
