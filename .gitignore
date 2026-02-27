@@ -31,5 +31,12 @@ Thumbs.db
 # CMake
 CMakeUserPresets.json
 
+cpp02/ex00/fixed
+cpp02/ex01/fixed
+cpp02/ex02/fixed
+
+cpp06/ex00/convert
+
 cpp07/ex00/whatever
 cpp07/ex01/iter
+cpp07/ex02/array
