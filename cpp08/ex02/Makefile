@@ -6,11 +6,11 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/03 15:44:42 by cwannhed          #+#    #+#              #
-#    Updated: 2026/03/03 15:45:00 by cwannhed         ###   ########.fr        #
+#    Updated: 2026/03/03 18:57:08 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = easyfind
+NAME = mutantstack
 
 CC = c++
 
