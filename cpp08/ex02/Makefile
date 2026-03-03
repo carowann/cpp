@@ -5,17 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/03/02 18:09:50 by cwannhed          #+#    #+#              #
-#    Updated: 2026/03/03 14:17:39 by cwannhed         ###   ########.fr        #
+#    Created: 2026/03/03 15:44:42 by cwannhed          #+#    #+#              #
+#    Updated: 2026/03/03 15:45:00 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = span
+NAME = easyfind
 
 CC = c++
 
 SRC = main.cpp \
-	Span.cpp
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
