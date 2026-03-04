@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 16:33:20 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/04 12:54:18 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:55:43 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,16 @@ void	testHeader(std::string const &testName) {
 	std::cout << BOLD << "\n==================== " << testName << " ====================" << RESET << std::endl;
 }
 
+void	printResult(bool ok) {
+	if (ok)
+		std::cout << GREEN << BOLD << "[OK]" << RESET << std::endl;
+	else
+		std::cout << RED << BOLD << "[KO]" << RESET << std::endl;
+}
+
 int main() {
+
+	/* ---------------------------------------------------------------------- */
 	testHeader("Test 0: subject example - MutantStack vs std::list");
 
 	std::vector<int>	mstack_out;
@@ -41,8 +50,9 @@ int main() {
 	mstack.push(5);
 	mstack.push(737);
 	mstack.push(0);
-	MutantStack<int>::iterator itMStack = mstack.begin();
-	MutantStack<int>::iterator iteMStack = mstack.end();
+
+	MutantStack<int>::iterator	itMStack = mstack.begin();
+	MutantStack<int>::iterator	iteMStack = mstack.end();
 	++itMStack;
 	--itMStack;
 	std::cout << "[MutantStack] elements: ";
@@ -75,51 +85,94 @@ int main() {
 	}
 	std::cout << std::endl;
 
-	if (mstack_out == list_out)
-		std::cout << GREEN << BOLD << "\n[OK] MutantStack and list outputs match!" << RESET << std::endl;
-	else
-		std::cout << RED << BOLD << "\n[KO] Outputs differ!" << RESET << std::endl;
+	std::cout << "MutantStack == list: ";
+	printResult(mstack_out == list_out);
 
-	/* -------------------------------------------------------------------------- */
+	/* ---------------------------------------------------------------------- */
 	testHeader("Test 1: reverse iterators");
+
 	MutantStack<int>::reverse_iterator	rItMStack = mstack.rbegin();
 	MutantStack<int>::reverse_iterator	rIteMStack = mstack.rend();
+	std::cout << "reverse elements: ";
 	while (rItMStack != rIteMStack) {
-		mstack_out.push_back(*rItMStack);
 		std::cout << *rItMStack << " ";
 		++rItMStack;
 	}
-	/* -------------------------------------------------------------------------- */
-	testHeader("Test 2 : const iterators");
-	MutantStack<int>::const_iterator			cItMStack = mstack.begin();
-	MutantStack<int>::const_iterator			cIteMStack = mstack.end();
-	MutantStack<int>::const_reverse_iterator	crItMStack = mstack.rbegin();
-	MutantStack<int>::const_reverse_iterator	crIteMStack = mstack.rend();
+	std::cout << std::endl;
 
-	while (cItMStack != cIteMStack) {
-		mstack_out.push_back(*cItMStack);
-		std::cout << *cItMStack << " ";
-		++cItMStack;
+	/* ---------------------------------------------------------------------- */
+	testHeader("Test 2: const iterators");
+
+	const MutantStack<int>						cmstack(mstack);
+	MutantStack<int>::const_iterator			cIt = cmstack.begin();
+	MutantStack<int>::const_iterator			cIte = cmstack.end();
+	MutantStack<int>::const_reverse_iterator	crIt = cmstack.rbegin();
+	MutantStack<int>::const_reverse_iterator	crIte = cmstack.rend();
+
+	std::cout << "const forward:  ";
+	while (cIt != cIte) {
+		std::cout << *cIt << " ";
+		++cIt;
 	}
 	std::cout << std::endl;
-	while (crItMStack != crIteMStack) {
-		mstack_out.push_back(*crItMStack);
-		std::cout << *crItMStack << " ";
-		++crItMStack;
+
+	std::cout << "const reverse:  ";
+	while (crIt != crIte) {
+		std::cout << *crIt << " ";
+		++crIt;
 	}
-	/* -------------------------------------------------------------------------- */
-	testHeader("Test 3: MutantStack w/ string");
+	std::cout << std::endl;
+
+	/* ---------------------------------------------------------------------- */
+	testHeader("Test 3: copy constructor");
+
+	MutantStack<int>	mstackCopy(mstack);
+	std::vector<int>	orig_out;
+	std::vector<int>	copy_out;
+
+	MutantStack<int>::iterator itOrig = mstack.begin();
+	MutantStack<int>::iterator iteOrig = mstack.end();
+	while (itOrig != iteOrig) { orig_out.push_back(*itOrig); ++itOrig; }
+
+	MutantStack<int>::iterator itCopy = mstackCopy.begin();
+	MutantStack<int>::iterator iteCopy = mstackCopy.end();
+	while (itCopy != iteCopy) { copy_out.push_back(*itCopy); ++itCopy; }
+
+	std::cout << "copy == original: ";
+	printResult(orig_out == copy_out);
+
+	/* ---------------------------------------------------------------------- */
+	testHeader("Test 4: operator=");
+
+	MutantStack<int>	mstackAssigned;
+	mstackAssigned.push(999);
+	mstackAssigned = mstack;
+
+	std::vector<int>	assigned_out;
+	MutantStack<int>::iterator itAssigned = mstackAssigned.begin();
+	MutantStack<int>::iterator iteAssigned = mstackAssigned.end();
+	while (itAssigned != iteAssigned) { assigned_out.push_back(*itAssigned); ++itAssigned; }
+
+	std::cout << "assigned == original: ";
+	printResult(orig_out == assigned_out);
+
+	/* ---------------------------------------------------------------------- */
+	testHeader("Test 5: MutantStack<std::string>");
+
 	MutantStack<std::string>	mstackStr;
 	mstackStr.push("we");
 	mstackStr.push("ciao");
 	mstackStr.push("pippo");
 	mstackStr.push("!!!");
-	MutantStack<std::string>::iterator itMStackStr = mstackStr.begin();
-	MutantStack<std::string>::iterator iteMStackStr = mstackStr.end();
-	while (itMStackStr != iteMStackStr) {
-		std::cout << *itMStackStr << " ";
-		++itMStackStr;
+
+	MutantStack<std::string>::iterator	itStr = mstackStr.begin();
+	MutantStack<std::string>::iterator	iteStr = mstackStr.end();
+	std::cout << "string elements: ";
+	while (itStr != iteStr) {
+		std::cout << *itStr << " ";
+		++itStr;
 	}
+	std::cout << std::endl;
 
 	return (0);
 }
