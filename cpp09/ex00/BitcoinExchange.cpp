@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:39:11 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/06 18:53:44 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/09 19:01:45 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ BitcoinExchange::BitcoinExchange() : _exchangeRate() {
 	while (std::getline(inFile, line)) {
 		size_t sepPos = line.find(',');
 		if (sepPos == std::string::npos)
-				continue ;
+			continue ;
 		std::string date = line.substr(0, sepPos);
-		float		value = strtof(line.substr(sepPos + 1, line.size()).c_str(), NULL);
+		float	value = strtof(line.substr(sepPos + 1, line.size()).c_str(), NULL);
 		_exchangeRate[date] = value;
 	}
 }
@@ -42,7 +42,37 @@ BitcoinExchange::~BitcoinExchange() {}
 
 /* -------------------------------------------------------------------------- */
 
-	// void	validateInputFile(std::string const &filename);
+void	BitcoinExchange::validateInputFile(std::string const &filename) {
+	std::ifstream inFile;
+	inFile.open((filename).c_str());
+	if (!inFile.is_open())
+		throw (std::runtime_error("Could not open file: " + filename));
+	std::string	line;
+	std::getline(inFile, line);
+	while (std::getline(inFile, line)) {
+		size_t sepPos = line.find('|');
+		if (sepPos == std::string::npos)
+			continue ;
+		std::string date = line.substr(0, sepPos);
+		if (!validateDate(date)) {
+			std::cerr << RED << "Error: bad input => " << date << RESET << std::endl;
+			continue ;
+		}
+		std::string	value = line.substr(sepPos + 1, line.size());
+		if (!validateValue(value, true)) {
+			std::cerr << RED << "Error: invalid value " << value << RESET << std::endl;
+			continue;
+		}
+		std::map<std::string, float>::iterator it = _exchangeRate.upper_bound(date);
+		if (it == _exchangeRate.begin()) {
+			std::cerr << RED << "Error: date out of range " << RESET << std::endl;
+			continue;
+		}
+		--it;
+		float bc = strtof(value.c_str(), NULL);
+		std::cout << GREEN << date << " => " << value << " = " << bc * it->second << RESET << std::endl;
+	}
+}
 
 bool	BitcoinExchange::validateDate(std::string const &date) {
 	if (date.size() != 10)
@@ -66,7 +96,15 @@ bool	BitcoinExchange::validateDate(std::string const &date) {
 	return (true);
 }
 
-
-
-	// bool	validateValue(const std::string& value, bool isInput);
+bool	BitcoinExchange::validateValue(std::string const &value, bool isInput) {
+	char* pEnd;
+	float	val = strtof(value.c_str(), &pEnd);
+	if (pEnd == value.c_str())
+		return (false);
+	if (val == HUGE_VALF || val < 0)
+		return (false);
+	if (isInput && val > 1000)
+		return (false);
+	return (true);
+}
 

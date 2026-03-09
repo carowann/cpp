@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 09:37:21 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/02/27 14:03:13 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/09 14:41:54 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@
 # define RESET	"\033[0m"
 
 template <typename T>
-class Array
-{
+class Array {
 private:
 	T				*_data;
 	unsigned int	_size;
