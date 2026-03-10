@@ -6,11 +6,11 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:39:35 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/09 18:33:15 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/10 10:41:22 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	BITCOINTEXCHANGE_HPP
+#ifndef	BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
 # include <map>

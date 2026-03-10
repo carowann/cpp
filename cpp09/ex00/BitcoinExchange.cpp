@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:39:11 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/09 19:01:45 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/10 11:54:22 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,18 @@ void	BitcoinExchange::validateInputFile(std::string const &filename) {
 	std::getline(inFile, line);
 	while (std::getline(inFile, line)) {
 		size_t sepPos = line.find('|');
-		if (sepPos == std::string::npos)
+		if (sepPos == std::string::npos) {
+			std::cerr << RED << "Error: bad input => missing '|'" << RESET << std::endl;
 			continue ;
-		std::string date = line.substr(0, sepPos);
+		}
+		std::string date = line.substr(0, 10);
 		if (!validateDate(date)) {
 			std::cerr << RED << "Error: bad input => " << date << RESET << std::endl;
 			continue ;
 		}
 		std::string	value = line.substr(sepPos + 1, line.size());
 		if (!validateValue(value, true)) {
-			std::cerr << RED << "Error: invalid value " << value << RESET << std::endl;
+			std::cerr << RED << "Error: invalid value" << value << RESET << std::endl;
 			continue;
 		}
 		std::map<std::string, float>::iterator it = _exchangeRate.upper_bound(date);
@@ -70,14 +72,14 @@ void	BitcoinExchange::validateInputFile(std::string const &filename) {
 		}
 		--it;
 		float bc = strtof(value.c_str(), NULL);
-		std::cout << GREEN << date << " => " << value << " = " << bc * it->second << RESET << std::endl;
+		std::cout << GREEN << date << " =>" << value << " = " << bc * it->second << RESET << std::endl;
 	}
 }
 
 bool	BitcoinExchange::validateDate(std::string const &date) {
 	if (date.size() != 10)
 		return (false);
-	if (date[3] != '-' || date[6] != '-')
+	if (date[4] != '-' || date[7] != '-')
 		return (false);
 	long	month = strtol(date.substr(5, 2).c_str(), NULL, 10);
 	if (month < 1 || month > 12)

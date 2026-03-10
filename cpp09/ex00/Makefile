@@ -6,7 +6,7 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/06 15:38:16 by cwannhed          #+#    #+#              #
-#    Updated: 2026/03/06 15:38:41 by cwannhed         ###   ########.fr        #
+#    Updated: 2026/03/10 10:44:40 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = btc
 CC = c++
 
 SRC = main.cpp \
+	BitcoinExchange.cpp
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
