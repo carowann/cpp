@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/10 14:54:37 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/10 17:37:26 by cwannhed         ###   ########.fr       */
+/*   Created: 2026/03/10 17:37:54 by cwannhed          #+#    #+#             */
+/*   Updated: 2026/03/11 13:55:50 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RPN_HPP
-# define RPN_HPP
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
-# include "iostream"
-# include <stack>
-# include <cstring>
-# include <cctype>
-# include <exception>
+# include <iostream>
+# include <vector>
+# include <deque>
+# include <climits>
 
 # define BOLD	"\033[1m"
 # define BLUE	"\033[0;34m"
@@ -25,18 +24,18 @@
 # define GREEN	"\033[0;32m"
 # define RESET	"\033[0m"
 
-class RPN {
+class PmergeMe {
 private:
-	std::stack<int>	_stack;
-
-	int	doOperation(int first, char op, int second);
+	std::vector<int>	_toSortVector;
+	std::deque<int>		_toSortDeque;
 public:
-	RPN();
-	RPN(RPN const &other);
-	RPN	&operator=(RPN const &other);
-	~RPN();
-	void	solveExpression(std::string const &expr);
+	PmergeMe();
+	PmergeMe(PmergeMe const &other);
+	PmergeMe &operator=(PmergeMe const &other);
+	~PmergeMe();
 
+	void	parseArgs(int const argc, const char *argv[]);
 };
+
 
 #endif

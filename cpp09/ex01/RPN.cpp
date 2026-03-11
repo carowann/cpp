@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:55:07 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/10 17:25:51 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/10 17:37:35 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ RPN::~RPN() {}
 
 /* -------------------------------------------------------------------------- */
 
-void	RPN::parseExpression(std::string const &expr) {
+void	RPN::solveExpression(std::string const &expr) {
 	for (size_t i = 0; i < expr.size(); i++) {
 		if (std::isspace(expr[i]))
 			continue ;
