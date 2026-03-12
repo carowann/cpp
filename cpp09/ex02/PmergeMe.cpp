@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:38:31 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/11 13:57:55 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/12 18:11:56 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,16 @@ void	PmergeMe::parseArgs(int const argc, const char *argv[]) {
 }
 
 /* -------------------------------------------------------------------------- */
+
+void	PmergeMe::sortVector(std::vector<int> &v, size_t start, size_t end) {
+	if (start ==  end)
+		return ;
+	for (size_t i = start; i < end; i++) {
+		if (v[i] > v[i + 1]) {
+			int temp = v[i];
+			v[i] = v[i + 1];
+			v[i + 1] = temp;
+		}
+	}
+	return (sortVector(v, start++, end));
+}
