@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:37:54 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/12 16:19:40 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/13 16:27:55 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 
 class PmergeMe {
 private:
-	std::vector<int>	_toSortVector;
-	std::deque<int>		_toSortDeque;
-	
-	void sortVector(std::vector<int> &v, size_t start, size_t end);
+	std::vector<int, int>				_toSortVector;
+	std::deque<int>						_toSortDeque;
+
+	std::vector<int> sortVector(std::vector<int> &v);
 public:
 	PmergeMe();
 	PmergeMe(PmergeMe const &other);

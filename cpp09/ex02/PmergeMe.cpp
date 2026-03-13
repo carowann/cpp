@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:38:31 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/12 18:11:56 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/13 16:39:03 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,25 @@ void	PmergeMe::parseArgs(int const argc, const char *argv[]) {
 
 /* -------------------------------------------------------------------------- */
 
-void	PmergeMe::sortVector(std::vector<int> &v, size_t start, size_t end) {
-	if (start ==  end)
-		return ;
-	for (size_t i = start; i < end; i++) {
+std::vector<int>	PmergeMe::sortVector(std::vector<int> &v) {
+	if (v.size() <= 1)
+		return (v);
+	std::vector<std::pair<int, int> > pairs;
+	for (size_t i = 0 ; i < v.size(); i+=2) {
+		int smaller = v[i];
+		int larger = v[i + 1];
 		if (v[i] > v[i + 1]) {
-			int temp = v[i];
-			v[i] = v[i + 1];
-			v[i + 1] = temp;
+			larger =  v[i];
+			smaller = v[i + 1];
 		}
+		pairs.push_back(std::make_pair(smaller, larger));
 	}
-	return (sortVector(v, start++, end));
+	int leftOver = -1;
+	if (v.size() % 2 != 0)
+		leftOver = v.back();
+	std::vector<int> mainChain;
+	for (size_t i = 0; i < pairs.size(); i++)
+		mainChain.push_back(pairs[i].second);
+	mainChain = sortVector(mainChain);
+	mainChain.insert(mainChain.begin(), pairs[0].first);
 }
