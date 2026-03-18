@@ -6,7 +6,7 @@
 #    By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/10 17:31:00 by cwannhed          #+#    #+#              #
-#    Updated: 2026/03/10 17:33:21 by cwannhed         ###   ########.fr        #
+#    Updated: 2026/03/17 15:23:34 by cwannhed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = PmergeMe
 CC = c++
 
 SRC = main.cpp \
-	RPN.cpp
+	PmergeMe.cpp
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
