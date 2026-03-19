@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:38:31 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/18 18:30:05 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:13:27 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ PmergeMe::~PmergeMe() {}
 
 void	PmergeMe::parseArgs(int const argc, char *argv[]) {
 	for (int i = 1; i < argc; i++) {
+		if (argv[i][0] == '\0')
+			throw (std::runtime_error("Invalid input"));
 		char *endPtr;
 		long number = strtol(argv[i], &endPtr, 10);
 		if (*endPtr != '\0' || number < 0 || number > INT_MAX)
@@ -105,7 +107,6 @@ std::vector<int> PmergeMe::insertPendingNumbers(std::vector<int> &mainChain, std
 		std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), bound, toInsert);
 		mainChain.insert(pos, toInsert);
 	}
-	printVector(mainChain);
 	return (mainChain);
 }
 
@@ -137,7 +138,7 @@ std::vector<int> PmergeMe::findJacobsthalIndexes(std::vector<std::pair<int, int>
 			x--;
 		}
 	}
-	for (int i = (int)pairs.size(); i > (int)edit.back(); i--)
+	for (int i = (int)pairs.size(); i > Jacob.back(); i--)
 		edit.push_back(i);
 	return (edit);
 }
@@ -209,7 +210,7 @@ std::deque<int> PmergeMe::findJacobsthalIndexes(std::deque<std::pair<int,int> > 
 			x--;
 		}
 	}
-	for (int i = (int)pairs.size(); i > (int)edit.back(); i--)
+	for (int i = (int)pairs.size(); i > Jacob.back(); i--)
 		edit.push_back(i);
 	return (edit);
 }
