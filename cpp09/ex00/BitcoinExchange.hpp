@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:39:35 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/10 10:41:22 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/20 10:25:11 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 class BitcoinExchange {
 private:
 	std::map<std::string, float>	_exchangeRate;
-	bool	validateDate(const std::string& date);
-	bool	validateValue(const std::string& value, bool isInput);
+	bool	validateDate(const std::string& date) const;
+	bool	validateValue(const std::string& value, bool isInput) const;
 public:
 	BitcoinExchange();
 	BitcoinExchange(BitcoinExchange const &other);

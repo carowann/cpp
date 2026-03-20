@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:38:50 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/10 11:47:52 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/20 10:26:42 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char *argv[]) {
 	if (argc != 2) {
-		std::cerr << RED << "Usage: " << argv[0] << " <filename>" << std::endl;
+		std::cerr << RED << "Usage: " << argv[0] << " <filename>" << RESET << std::endl;
 		return (1);
 	}
 	try {

@@ -6,7 +6,7 @@
 /*   By: cwannhed <cwannhed@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:39:11 by cwannhed          #+#    #+#             */
-/*   Updated: 2026/03/10 11:54:22 by cwannhed         ###   ########.fr       */
+/*   Updated: 2026/03/20 10:39:54 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 BitcoinExchange::BitcoinExchange() : _exchangeRate() {
 	std::ifstream inFile("data.csv");
 	if (!inFile.is_open())
-		throw (std::exception());
+		throw (std::runtime_error("Error: could not open database data.csv"));
 	std::string	line;
 	std::getline(inFile, line);
 	while (std::getline(inFile, line)) {
@@ -76,7 +76,7 @@ void	BitcoinExchange::validateInputFile(std::string const &filename) {
 	}
 }
 
-bool	BitcoinExchange::validateDate(std::string const &date) {
+bool	BitcoinExchange::validateDate(std::string const &date) const {
 	if (date.size() != 10)
 		return (false);
 	if (date[4] != '-' || date[7] != '-')
@@ -98,10 +98,10 @@ bool	BitcoinExchange::validateDate(std::string const &date) {
 	return (true);
 }
 
-bool	BitcoinExchange::validateValue(std::string const &value, bool isInput) {
+bool	BitcoinExchange::validateValue(std::string const &value, bool isInput) const {
 	char* pEnd;
 	float	val = strtof(value.c_str(), &pEnd);
-	if (pEnd == value.c_str())
+	if (pEnd == value.c_str() || pEnd != (value.c_str() + value.size()))
 		return (false);
 	if (val == HUGE_VALF || val < 0)
 		return (false);
